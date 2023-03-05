@@ -81,7 +81,7 @@ def plot_box_plot(df, measure_name, methods_family, datasets, scale='linear'):
 
             if len(methods_family) > 0 and len(datasets) > 0:
                 fig = go.Figure()
-                fig.add_trace(go.Scatter(x=df[option1], y=df[option2], mode='markers', name='markers'))
+                fig.add_trace(go.Scatter(x=df[option1], y=df[option2], mode='markers', name='(Method 1, Method 2)'))
                 fig.add_trace(go.Scatter(
                                     x=[min(min(df[option1])+1e-4, min(df[option2])+1e-4), max(max(df[option1])+1e-4, max(df[option2])+1e-4)],
                                     y=[min(min(df[option1])+1e-4, min(df[option2])+1e-4), max(max(df[option1])+1e-4, max(df[option2])+1e-4)],
