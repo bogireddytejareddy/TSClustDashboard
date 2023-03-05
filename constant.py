@@ -239,7 +239,7 @@ oracle = ['GENIE','MORTY']
 description_intro = f"""
 Clustering is one of the most popular time-series tasks because it enables unsupervised data exploration and often serves as a subroutine or 
 preprocessing step for other tasks. Despite being the subject of active research for decades across disciplines, only limited efforts focused on 
-benchmarking clustering methods for time series. Therefore, we comprehensively evaluate 59 time-series clustering methods spanning 9 different 
+benchmarking clustering methods for time series. Therefore, we comprehensively evaluate x time-series clustering methods spanning 9 different 
 classes from the data mining, machine learning, and deep learning literature.
 
 ## Contributors
@@ -387,27 +387,3 @@ lists the methods considered:
 ** Note: Results for LDPS and USLM methods are not mentioned because of thier infeasible runtimes on large datasets.
 
 """
-
-text_description_MS = f"""
-We consider 16 time series classification (TSC) algorithms used as model selection. The following table lists and describes the methods considered:
-
-| TSC  (as model seleciton)  | Description|
-|:--|:---------:|
-| SVC | maps training examples to points in space to maximize the gap between the two categories. |
-| Bayes | uses Bayes’ theorem to predict the class of a new data point using the posterior probabilities for each class. |
-| MLP | consists of multiple layers of interconnected neurons. |
-| QDA | is a discriminant analysis algorithm for classification problems. |
-| Adaboost | is a meta-algorithm using boosting technique with weak classifiers. |
-| Decision Tree | is a tree-based approach that splits data points into different leaves based on features. |
-| Random Forest  | is an ensemble Decision Trees fed with random samples (with replacement) of the training set and random set of features. |
-| kNN | assigns the most common class among its k nearest neighbors. |
-| Rocket | transforms input time series using a small set of convolutional kernels, and uses the transformed features to train a linear classifier. |
-| ConvNet  | uses convolutional layers to automatically and adaptively learn spatial hierarchies of features from input data. |
-| ResNet | is a ConvNet with residual connections between convolutional block. |
-| InceptionTime | is a combination of ResNets with kernels of multiple sizes. |
-| SIT-conv | is a transformer architecture with a convolutional layer as input. |
-| SIT-linear | is a transformer architecture for which the time series is divided into non-overlapping patches and linearly projected into the embedding space. |
-| SIT-stem | is a transformer architecture with convolutional layers with increasing dimensionality as input. |
-| SIT-stem-ReLU | is similar to SIT-stem but with Scaled ReLU. |
-"""
-
