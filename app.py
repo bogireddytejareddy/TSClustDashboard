@@ -3,6 +3,7 @@ import altair as alt
 import math
 import matplotlib.pyplot as plt
 import seaborn as sns
+import numpy as np
 import pandas as pd
 import streamlit as st
 from PIL import Image
@@ -10,7 +11,7 @@ from constant import *
 from st_aggrid import AgGrid, GridOptionsBuilder
 import plotly.graph_objects as go
 
-
+st. set_page_config(layout="wide") 
 #plt.style.use('dark_background')
 df = pd.read_csv('data/results.csv')
 characteristics_df = pd.read_csv('data/characteristics.csv')
@@ -36,6 +37,9 @@ def plot_time_plot(measure_name):
             text=time_text,
             mode='markers',
             marker=dict(
+                opacity=.7,
+                color='red',
+                line = dict(width=1, color = '#1f77b4'),
                 size=time,
                 sizemode='area',
                 sizeref=2.*max(time)/(80.**2),
@@ -54,12 +58,26 @@ def plot_box_plot(df, measure_name, methods_family, datasets, scale='linear'):
         tab1, tab2 = st.tabs(["Box Plot", "Scatter Plot"])
         with tab1:
             fig = go.Figure()
-            for cols in df.columns[1:]:
-                fig.add_trace(go.Box(y=df[cols], name=cols[:-len(measure_name)-1]))
-            fig.update_layout(showlegend=False, width=800, height=600, template="plotly_white", font=dict(family="Arial",
-                                                        size=19,
-                                                        color="black"))
-
+            #c = ['hsl('+str(h)+',50%'+',50%)' for h in np.linspace(0, 360, len(df.columns[1:]))]
+            for i, cols in enumerate(df.columns[1:]):
+                fig.add_trace(go.Box(y=df[cols], name=cols[:-len(measure_name)-1],
+                                     marker=dict(
+                                            opacity=1,
+                                            color='rgb(8,81,156)',
+                                            outliercolor='rgba(219, 64, 82, 0.6)',
+                                            line=dict(
+                                                outliercolor='rgba(219, 64, 82, 0.6)',
+                                                outlierwidth=2)),
+                                        line_color='rgb(8,81,156)'
+                                    ))
+            fig.update_layout(showlegend=False, 
+                              width=1290, 
+                              height=600, 
+                              template="plotly_white", 
+                              font=dict(family="Arial",
+                                        size=39,
+                                        color="black"))
+            fig.update_xaxes(tickfont_size=15, ticks="outside", ticklen=20, tickwidth=2)
             st.plotly_chart(fig, theme="streamlit", use_container_width=False)
 
             cols_list = []
@@ -70,6 +88,7 @@ def plot_box_plot(df, measure_name, methods_family, datasets, scale='linear'):
                     cols_list.append(col)
 
             df.columns = cols_list
+            AgGrid(df)
         with tab2:
             option1 = st.selectbox(
                 'Method 1',
@@ -121,7 +140,6 @@ def plot_box_plot(df, measure_name, methods_family, datasets, scale='linear'):
                 fig.layout.on_change(do_zoom, 'xaxis.range', 'yaxis.range')
                 st.plotly_chart(fig, theme="streamlit", use_container_width=False)
 
-        AgGrid(df)
         
 
 def generate_dataframe(df, datasets, methods_family, metric_name):
