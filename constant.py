@@ -1,7 +1,7 @@
 import pandas as pd
 
 
-method_class_dict = {'Partitional': ['k-AVG', 'k-DBA', 'k-SC', 'k-Shape'],
+method_class_dict = {'Partitional': ['k-AVG', 'k-DBA', 'k-SC', 'k-Shape', 'PAM-ED', 'PAM-SBD', 'PAM-MSM', 'PAM-LCSS', 'PAM-TWED', 'PAM-SWALE', 'PAM-DTW', 'PAM-EDR', 'PAM-ERP'],
                      'Kernel': ['KKM_GAK', 'KKM_KDTW', 'KKM_RBF', 'KKM_SINK', 'SC_GAK', 'SC_KDTW', 'SC_RBF', 'SC_SINK'],
                      'Density': ['DBSCAN-ED', 'DBSCAN-MSM', 'DBSCAN-SBD', 'DP-ED', 'DP-MSM', 'DP-SBD', 'OPTICS-ED', 'OPTICS-MSM', 'OPTICS-SBD'],
                      'Hierarchical': ['AGG-A-ED', 'AGG-A-MSM', 'AGG-A-SBD', 'AGG-C-ED', 'AGG-C-MSM', 'AGG-C-SBD', 'AGG-S-ED', 'AGG-S-MSM', 'AGG-S-SBD', 'BIRCH'],
