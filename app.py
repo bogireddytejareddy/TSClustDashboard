@@ -80,17 +80,46 @@ def plot_box_plot(df, measure_name, methods_family, datasets, scale='linear'):
                 tuple(methods_family))
 
             if len(methods_family) > 0 and len(datasets) > 0:
-                fig = go.Figure()
-                fig.add_trace(go.Scatter(x=df[option1], y=df[option2], mode='markers', name='(Method 1, Method 2)'))
+                fig = go.FigureWidget()
+                trace1 = fig.add_scattergl(x=df[option1], y=df[option2], mode='markers', name='(Method 1, Method 2)',
+                                        marker = dict(size=10,
+                                                    opacity=.7,
+                                                    color='red',
+                                                    line = dict(width=1, color = '#1f77b4')
+                                                    ))
                 fig.add_trace(go.Scatter(
                                     x=[min(min(df[option1])+1e-4, min(df[option2])+1e-4), max(max(df[option1])+1e-4, max(df[option2])+1e-4)],
                                     y=[min(min(df[option1])+1e-4, min(df[option2])+1e-4), max(max(df[option1])+1e-4, max(df[option2])+1e-4)],
                                     name="X=Y"
                                 ))
-                fig.update_layout(template="plotly_white", xaxis_title=option1, yaxis_title=option2, font=dict(family="Arial",
-                                                            size=19,
-                                                            color="black"))
-                st.plotly_chart(fig, theme="streamlit", use_container_width=True)
+                trace2 = fig.add_histogram(x=df[option1], name='x density', marker=dict(color='#1f77b4', opacity=0.7),
+                                    yaxis='y2'
+                                    )
+                trace3 = fig.add_histogram(y=df[option2], name='y density', marker=dict(color='#1f77b4', opacity=0.7), 
+                                    xaxis='x2'
+                                    )
+                fig.layout = dict(xaxis=dict(domain=[0, 0.85], showgrid=False, zeroline=False),
+                                yaxis=dict(domain=[0, 0.85], showgrid=False, zeroline=False),
+                                xaxis_title=option1, yaxis_title=option2,
+                                showlegend=False,
+                                margin=dict(t=50),
+                                hovermode='closest',
+                                bargap=0,
+                                xaxis2=dict(domain=[0.85, 1], showgrid=False, zeroline=False),
+                                yaxis2=dict(domain=[0.85, 1], showgrid=False, zeroline=False),
+                                height=600,
+                                )
+
+                def do_zoom(layout, xaxis_range, yaxis_range):
+                    inds = ((xaxis_range[0] <= df[option1]) & (df[option1] <= xaxis_range[1]) &
+                            (yaxis_range[0] <= df[option2]) & (df[option2] <= yaxis_range[1]))
+
+                    with fig.batch_update():
+                        trace2.x = df[option1][inds]
+                        trace3.y = df[option2][inds]
+                    
+                fig.layout.on_change(do_zoom, 'xaxis.range', 'yaxis.range')
+                st.plotly_chart(fig, theme="streamlit", use_container_width=False)
 
         AgGrid(df)
         
