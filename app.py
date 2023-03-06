@@ -162,6 +162,76 @@ def plot_misconceptions_plot(metric_name, datasets):
                     st.pyplot(fig)
 
                 stat_plots(df)
+
+    with tab5:
+        unsupervised_list = ['k-Shape', 'PAM-Unsupervised-MSM', 'PAM-Unsupervised-LCSS', 'PAM-Unsupervised-TWED', 'PAM-Unsupervised-SWALE', 'PAM-Unsupervised-DTW', 'PAM-Unsupervised-EDR']
+        supervised_list = ['k-Shape', 'PAM-Supervised-MSM', 'PAM-Supervised-LCSS', 'PAM-Supervised-TWED', 'PAM-Supervised-SWALE', 'PAM-Supervised-DTW', 'PAM-Supervised-EDR']
+
+        container_method = st.container()
+        all_supervised_measures = st.checkbox("Select all", key='all_supervised_measures')
+        if all_supervised_measures: all_supervised_measures_family = container_method.multiselect('Select supervised elastic measures', sorted(supervised_list), sorted(supervised_list), key='selector_all_supervised_measures')
+        else: all_supervised_measures_family = container_method.multiselect('Select supervised elastic measures', sorted(supervised_list), key='selector_supervised_measures')
+        
+        df = pd.read_csv('data/supervised-unsupervised.csv')
+        df = df.loc[df['Name'].isin(datasets)][[method_g + '-' + metric_name for method_g in all_supervised_measures_family]]
+        df.insert(0, 'Datasets', datasets)
+
+        if len(datasets) > 0:
+            if len(all_supervised_measures_family) > 1 and len(all_supervised_measures_family) < 13:
+                def stat_plots(df_toplot):
+                    def cd_diagram_process(df, rank_ascending=False):
+                        df = df.rank(ascending=rank_ascending, axis=1)
+                        return df
+
+                    df_toplot.drop(columns=df_toplot.columns[0], axis=1, inplace=True)
+
+                    rank_ri_df  = cd_diagram_process(df_toplot)
+                    rank_df = rank_ri_df.mean().sort_values()
+
+                    names = []
+                    for method in rank_df.index.values:
+                        names.append(method[:-len(metric_name)-1])
+
+                    avranks =  rank_df.values
+                    cd = compute_CD(avranks, 128, "0.1")
+                    graph_ranks(avranks, names, cd=cd, width=9, textspace=1.25)
+                    fig = plt.show()
+                    st.pyplot(fig)
+
+                stat_plots(df)
+
+        container_method = st.container()
+        all_unsupervised_measures = st.checkbox("Select all", key='all_unsupervised_measures')
+        if all_unsupervised_measures: all_unsupervised_measures_family = container_method.multiselect('Select unsupervised elastic measures', sorted(unsupervised_list), sorted(unsupervised_list), key='selector_all_unsupervised_measures')
+        else: all_unsupervised_measures_family = container_method.multiselect('Select unsupervised elastic measures', sorted(unsupervised_list), key='selector_unsupervised_measures')
+        
+        df = pd.read_csv('data/supervised-unsupervised.csv')
+        df = df.loc[df['Name'].isin(datasets)][[method_g + '-' + metric_name for method_g in all_unsupervised_measures_family]]
+        df.insert(0, 'Datasets', datasets)
+
+        if len(datasets) > 0:
+            if len(all_unsupervised_measures_family) > 1 and len(all_unsupervised_measures_family) < 13:
+                def stat_plots(df_toplot):
+                    def cd_diagram_process(df, rank_ascending=False):
+                        df = df.rank(ascending=rank_ascending, axis=1)
+                        return df
+
+                    df_toplot.drop(columns=df_toplot.columns[0], axis=1, inplace=True)
+
+                    rank_ri_df  = cd_diagram_process(df_toplot)
+                    rank_df = rank_ri_df.mean().sort_values()
+
+                    names = []
+                    for method in rank_df.index.values:
+                        names.append(method[:-len(metric_name)-1])
+
+                    avranks =  rank_df.values
+                    cd = compute_CD(avranks, 128, "0.1")
+                    graph_ranks(avranks, names, cd=cd, width=9, textspace=1.25)
+                    fig = plt.show()
+                    st.pyplot(fig)
+
+                stat_plots(df)
     
     with tab6:
         dl_list = ['DCN', 'DEC', 'IDEC', 'DEPICT', 'DTC', 'DTCR', 'RES_CNN+CNRV+NONE', 'SDCN', 'SOM_VAE', 'ClusterGAN', 'VADE']
