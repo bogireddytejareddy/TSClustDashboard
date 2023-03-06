@@ -86,7 +86,7 @@ def plot_time_plot(measure_name):
                                                         size=19,
                                                         color="black"))
 
-        st.plotly_chart(fig, theme="streamlit", use_container_width=False)
+        st.plotly_chart(fig)
 
 
 def plot_misconceptions_plot(metric_name, datasets):
@@ -304,7 +304,7 @@ def plot_box_plot(df, measure_name, methods_family, datasets, scale='linear'):
                                         size=39,
                                         color="black"))
             fig.update_xaxes(tickfont_size=15, ticks="outside", ticklen=20, tickwidth=2)
-            st.plotly_chart(fig, theme="streamlit", use_container_width=False)
+            st.plotly_chart(fig)
 
             cols_list = []
             for i, col in enumerate(df.columns):
@@ -364,7 +364,7 @@ def plot_box_plot(df, measure_name, methods_family, datasets, scale='linear'):
                         trace3.y = df[option2][inds]
                     
                 fig.layout.on_change(do_zoom, 'xaxis.range', 'yaxis.range')
-                st.plotly_chart(fig, theme="streamlit", use_container_width=False)
+                st.plotly_chart(fig)
 
         
 def generate_dataframe(df, datasets, methods_family, metric_name):
