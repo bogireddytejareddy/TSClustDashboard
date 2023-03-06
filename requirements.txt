@@ -4,6 +4,5 @@ streamlit
 matplotlib
 numpy
 seaborn
-streamlit-aggrid
 plotly
 ipywidgets==7.0.0
