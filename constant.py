@@ -1,6 +1,25 @@
 import pandas as pd
 
 
+def compute_CD(avranks, n, alpha="0.05", test="nemenyi"):
+    k = len(avranks)
+    d = {("nemenyi", "0.05"): [0, 0, 1.959964, 2.343701, 2.569032, 2.727774,
+                               2.849705, 2.94832, 3.030879, 3.101730, 3.163684,
+                               3.218654, 3.268004, 3.312739, 3.353618, 3.39123,
+                               3.426041, 3.458425, 3.488685, 3.517073,
+                               3.543799],
+         ("nemenyi", "0.1"): [0, 0, 1.644854, 2.052293, 2.291341, 2.459516,
+                              2.588521, 2.692732, 2.779884, 2.854606, 2.919889,
+                              2.977768, 3.029694, 3.076733, 3.119693, 3.159199,
+                              3.195743, 3.229723, 3.261461, 3.291224, 3.319233],
+         ("bonferroni-dunn", "0.05"): [0, 0, 1.960, 2.241, 2.394, 2.498, 2.576,
+                                       2.638, 2.690, 2.724, 2.773],
+         ("bonferroni-dunn", "0.1"): [0, 0, 1.645, 1.960, 2.128, 2.241, 2.326,
+                                      2.394, 2.450, 2.498, 2.539]}
+    q = d[(test, alpha)]
+    cd = q[k] * (k * (k + 1) / (6.0 * n)) ** 0.5
+    return cd
+
 method_class_dict = {'Partitional': ['k-AVG', 'k-DBA', 'k-SC', 'k-Shape', 'PAM-ED', 'PAM-SBD', 'PAM-MSM', 'PAM-LCSS', 'PAM-TWED', 'PAM-SWALE', 'PAM-DTW', 'PAM-EDR', 'PAM-ERP'],
                      'Kernel': ['KKM_GAK', 'KKM_KDTW', 'KKM_RBF', 'KKM_SINK', 'SC_GAK', 'SC_KDTW', 'SC_RBF', 'SC_SINK'],
                      'Density': ['DBSCAN-ED', 'DBSCAN-MSM', 'DBSCAN-SBD', 'DP-ED', 'DP-MSM', 'DP-SBD', 'OPTICS-ED', 'OPTICS-MSM', 'OPTICS-SBD'],
