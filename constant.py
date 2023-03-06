@@ -239,7 +239,7 @@ oracle = ['GENIE','MORTY']
 description_intro = f"""
 Clustering is one of the most popular time-series tasks because it enables unsupervised data exploration and often serves as a subroutine or 
 preprocessing step for other tasks. Despite being the subject of active research for decades across disciplines, only limited efforts focused on 
-benchmarking clustering methods for time series. Therefore, we comprehensively evaluate x time-series clustering methods spanning 9 different 
+benchmarking clustering methods for time series. Therefore, we comprehensively evaluate 59 time-series clustering methods spanning 9 different 
 classes from the data mining, machine learning, and deep learning literature.
 
 ## Contributors
@@ -387,3 +387,4 @@ lists the methods considered:
 ** Note: Results for LDPS and USLM methods are not mentioned because of thier infeasible runtimes on large datasets.
 
 """
+
