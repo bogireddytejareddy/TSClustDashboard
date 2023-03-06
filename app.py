@@ -57,7 +57,6 @@ def plot_stat_plot(df, metric_name, methods_family, datasets):
             stat_plots(df)
     
 
-@st.cache_data
 def plot_time_plot(measure_name):
     container_method = st.container()
     all_time_method = st.checkbox("Select all",key='all_time_method')
