@@ -1,6 +1,7 @@
 altair
 pandas
 streamlit
+streamlit-aggrid
 matplotlib
 numpy
 seaborn
