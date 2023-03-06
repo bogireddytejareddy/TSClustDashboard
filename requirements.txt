@@ -7,4 +7,5 @@ seaborn
 streamlit-aggrid
 plotly
 scipy
+networkx
 ipywidgets==7.0.0
