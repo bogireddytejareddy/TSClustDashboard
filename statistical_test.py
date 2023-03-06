@@ -10,8 +10,6 @@ matplotlib.rcParams['font.sans-serif'] = 'Arial'
 
 import operator
 import math
-from scipy.stats import wilcoxon
-from scipy.stats import friedmanchisquare
 import networkx
 
 
