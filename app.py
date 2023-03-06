@@ -9,7 +9,7 @@ import streamlit as st
 from PIL import Image
 from constant import *
 from constant import compute_CD
-#from st_aggrid import AgGrid
+from st_aggrid import AgGrid
 import plotly.graph_objects as go
 from statistical_test import graph_ranks
 
@@ -314,7 +314,7 @@ def plot_box_plot(df, measure_name, methods_family, datasets, scale='linear'):
                     cols_list.append(col)
 
             df.columns = cols_list
-            #AgGrid(df)
+            AgGrid(df)
         with tab2:
             option1 = st.selectbox(
                 'Method 1',
@@ -437,7 +437,7 @@ with tab_misconceptions:
 with tab_dataset:
     st.markdown('# Dataset Description')
     st.markdown(text_description_dataset)
-    #AgGrid(characteristics_df)
+    AgGrid(characteristics_df)
 
 with tab_method:
     st.markdown('# Time-Series Clustering Methods')
