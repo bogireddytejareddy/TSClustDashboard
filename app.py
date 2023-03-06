@@ -9,7 +9,7 @@ import streamlit as st
 from PIL import Image
 from constant import *
 from constant import compute_CD
-from st_aggrid import AgGrid, GridOptionsBuilder
+from st_aggrid import AgGrid
 import plotly.graph_objects as go
 from statistical_test import graph_ranks
 
