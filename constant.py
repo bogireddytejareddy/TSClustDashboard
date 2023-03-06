@@ -1,6 +1,8 @@
 import pandas as pd
 
 
+
+
 def compute_CD(avranks, n, alpha="0.05", test="nemenyi"):
     k = len(avranks)
     d = {("nemenyi", "0.05"): [0, 0, 1.959964, 2.343701, 2.569032, 2.727774,
@@ -19,6 +21,8 @@ def compute_CD(avranks, n, alpha="0.05", test="nemenyi"):
     q = d[(test, alpha)]
     cd = q[k] * (k * (k + 1) / (6.0 * n)) ** 0.5
     return cd
+
+
 
 method_class_dict = {'Partitional': ['k-AVG', 'k-DBA', 'k-SC', 'k-Shape', 'PAM-ED', 'PAM-SBD', 'PAM-MSM', 'PAM-LCSS', 'PAM-TWED', 'PAM-SWALE', 'PAM-DTW', 'PAM-EDR', 'PAM-ERP'],
                      'Kernel': ['KKM_GAK', 'KKM_KDTW', 'KKM_RBF', 'KKM_SINK', 'SC_GAK', 'SC_KDTW', 'SC_RBF', 'SC_SINK'],
@@ -406,4 +410,5 @@ lists the methods considered:
 ** Note: Results for LDPS and USLM methods are not mentioned because of thier infeasible runtimes on large datasets.
 
 """
+
 
