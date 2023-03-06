@@ -24,7 +24,7 @@ characteristics_df.drop(columns=characteristics_df.columns[0], axis=1, inplace=T
 characteristics_df.columns = ['Name', 'NumOfTrainingSamples', 'NumOfTestingSample', 'NumOfSamples', 'SeqLength', 'NumOfClusters', 'Type']
 characteristics_df = characteristics_df[['Name', 'NumOfSamples', 'SeqLength', 'NumOfClusters', 'Type']]
 
-
+@st.cache_data
 def plot_stat_plot(df, metric_name, methods_family, datasets):
     container_method = st.container()
     stat_methods_family = container_method.multiselect('Select a group of methods', sorted(methods_family), key='selector_stat_methods')
@@ -57,7 +57,7 @@ def plot_stat_plot(df, metric_name, methods_family, datasets):
             stat_plots(df)
     
 
-
+@st.cache_data
 def plot_time_plot(measure_name):
     container_method = st.container()
     all_time_method = st.checkbox("Select all",key='all_time_method')
@@ -89,7 +89,7 @@ def plot_time_plot(measure_name):
 
         st.plotly_chart(fig, theme="streamlit", use_container_width=False)
 
-
+@st.cache_data
 def plot_misconceptions_plot(metric_name, datasets):
     tab4, tab5, tab6 = st.tabs(["Distance Measures", "Supervised vs. Unsupervised Tuning", "Deep Learning Methods"])
     with tab4:
@@ -280,7 +280,7 @@ def plot_misconceptions_plot(metric_name, datasets):
                 stat_plots(df)
 
 
-
+@st.cache_data
 def plot_box_plot(df, measure_name, methods_family, datasets, scale='linear'):
     if len(df.columns) > 0:
         tab1, tab2 = st.tabs(["Box Plot", "Scatter Plot"])
@@ -369,7 +369,7 @@ def plot_box_plot(df, measure_name, methods_family, datasets, scale='linear'):
                 st.plotly_chart(fig, theme="streamlit", use_container_width=False)
 
         
-
+@st.cache_data
 def generate_dataframe(df, datasets, methods_family, metric_name):
     df = df.loc[df['Dataset'].isin(datasets)][[method_g + '-' + metric_name for method_g in methods_family]]
     df.insert(0, 'Datasets', datasets)
