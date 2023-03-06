@@ -165,7 +165,7 @@ def graph_ranks(avranks, names, cd=None, cdmethod=None, lowv=None, highv=None,
 
     k = len(ssums)
 
-    a = 1
+    a = 0.4
     b = a + 0.1
 
     for i in range(math.ceil(k / 2)):
