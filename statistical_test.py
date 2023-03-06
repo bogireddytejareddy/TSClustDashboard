@@ -8,7 +8,6 @@ import matplotlib.pyplot as plt
 matplotlib.rcParams['font.family'] = 'sans-serif'
 matplotlib.rcParams['font.sans-serif'] = 'Arial'
 
-import operator
 import math
 
 
