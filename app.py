@@ -13,7 +13,7 @@ from st_aggrid import AgGrid
 import plotly.graph_objects as go
 from statistical_test import graph_ranks
 
-#st. set_page_config(layout="wide") 
+st. set_page_config(layout="wide") 
 st.set_option('deprecation.showPyplotGlobalUse', False)
 
 #plt.style.use('dark_background')
