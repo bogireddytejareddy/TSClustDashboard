@@ -280,7 +280,6 @@ def plot_misconceptions_plot(metric_name, datasets):
                 stat_plots(df)
 
 
-@st.cache_data
 def plot_box_plot(df, measure_name, methods_family, datasets, scale='linear'):
     if len(df.columns) > 0:
         tab1, tab2 = st.tabs(["Box Plot", "Scatter Plot"])
