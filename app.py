@@ -437,7 +437,7 @@ with tab_misconceptions:
 with tab_dataset:
     st.markdown('# Dataset Description')
     st.markdown(text_description_dataset)
-    AgGrid(characteristics_df)
+    #AgGrid(characteristics_df)
 
 with tab_method:
     st.markdown('# Time-Series Clustering Methods')
