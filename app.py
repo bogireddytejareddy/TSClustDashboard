@@ -27,7 +27,7 @@ characteristics_df = characteristics_df[['Name', 'NumOfSamples', 'SeqLength', 'N
 
 def plot_stat_plot(df, metric_name, methods_family, datasets):
     container_method = st.container()
-    stat_methods_family = container_method.multiselect('Select a group of methods (atleast 1 and utmost 12 methods)', sorted(methods_family), key='selector_stat_methods')
+    stat_methods_family = container_method.multiselect('Select a group of methods', sorted(methods_family), key='selector_stat_methods')
     
     df = df.loc[df['Datasets'].isin(datasets)][[method_g + '-' + metric_name for method_g in stat_methods_family]]
     df.insert(0, 'Datasets', datasets)
@@ -46,7 +46,7 @@ def plot_stat_plot(df, metric_name, methods_family, datasets):
 
                 names = []
                 for method in rank_df.index.values:
-                    names.append(method[:-3])
+                    names.append(method[:-len(metric_name)-1])
 
                 avranks =  rank_df.values
                 cd = compute_CD(avranks, 128, "0.1")
@@ -88,6 +88,127 @@ def plot_time_plot(measure_name):
                                                         color="black"))
 
         st.plotly_chart(fig, theme="streamlit", use_container_width=False)
+
+
+def plot_misconceptions_plot(metric_name, datasets):
+    tab4, tab5, tab6 = st.tabs(["Distance Measures", "Supervised vs. Unsupervised Tuning", "Deep Learning Methods"])
+    with tab4:
+        elastic_measures_list = ['PAM-ED', 'PAM-SBD', 'PAM-MSM', 'PAM-LCSS', 'PAM-TWED', 'PAM-SWALE', 'PAM-DTW', 'PAM-EDR', 'PAM-ERP']
+        kernel_measures_list = ['KKM_GAK', 'KKM_KDTW', 'KKM_RBF', 'KKM_SINK']
+
+        container_method = st.container()
+        all_elastic_measures = st.checkbox("Select all", key='all_elastic_measures')
+        if all_elastic_measures: all_elastic_measures_family = container_method.multiselect('Select elastic measures', sorted(elastic_measures_list), sorted(elastic_measures_list), key='selector_all_elastic_measures')
+        else: all_elastic_measures_family = container_method.multiselect('Select elastic measures', sorted(elastic_measures_list), key='selector_elastic_measures')
+
+        df = pd.read_csv('data/results.csv')
+        df = df.loc[df['Dataset'].isin(datasets)][[method_g + '-' + metric_name for method_g in all_elastic_measures_family]]
+        df.insert(0, 'Datasets', datasets)
+
+        if len(datasets) > 0:
+            if len(all_elastic_measures_family) > 1 and len(all_elastic_measures_family) < 13:
+                def stat_plots(df_toplot):
+                    def cd_diagram_process(df, rank_ascending=False):
+                        df = df.rank(ascending=rank_ascending, axis=1)
+                        return df
+
+                    df_toplot.drop(columns=df_toplot.columns[0], axis=1, inplace=True)
+
+                    rank_ri_df  = cd_diagram_process(df_toplot)
+                    rank_df = rank_ri_df.mean().sort_values()
+
+                    names = []
+                    for method in rank_df.index.values:
+                        names.append(method[:-len(metric_name)-1])
+
+                    avranks =  rank_df.values
+                    cd = compute_CD(avranks, 128, "0.1")
+                    graph_ranks(avranks, names, cd=cd, width=9, textspace=1.25)
+                    fig = plt.show()
+                    st.pyplot(fig)
+
+                stat_plots(df)
+
+
+        container_method = st.container()
+        all_kernel_measures = st.checkbox("Select all",key='all_kernel_measures')
+        if all_kernel_measures: all_kernel_measures_family = container_method.multiselect('Select kernel measures', sorted(kernel_measures_list), sorted(kernel_measures_list), key='selector_all_kernel_measures')
+        else: all_kernel_measures_family = container_method.multiselect('Select kernel measures', sorted(kernel_measures_list), key='selector_kernel_measures')
+        
+        df = pd.read_csv('data/results.csv')
+        df = df.loc[df['Dataset'].isin(datasets)][[method_g + '-' + metric_name for method_g in all_kernel_measures_family]]
+        df.insert(0, 'Datasets', datasets)
+
+        if len(datasets) > 0:
+            if len(all_kernel_measures_family) > 1 and len(all_kernel_measures_family) < 13:
+                def stat_plots(df_toplot):
+                    def cd_diagram_process(df, rank_ascending=False):
+                        df = df.rank(ascending=rank_ascending, axis=1)
+                        return df
+
+                    df_toplot.drop(columns=df_toplot.columns[0], axis=1, inplace=True)
+
+                    rank_ri_df  = cd_diagram_process(df_toplot)
+                    rank_df = rank_ri_df.mean().sort_values()
+
+                    names = []
+                    for method in rank_df.index.values:
+                        names.append(method[:-len(metric_name)-1])
+
+                    avranks =  rank_df.values
+                    cd = compute_CD(avranks, 128, "0.1")
+                    graph_ranks(avranks, names, cd=cd, width=9, textspace=1.25)
+                    fig = plt.show()
+                    st.pyplot(fig)
+
+                stat_plots(df)
+    
+    with tab6:
+        dl_list = ['DCN', 'DEC', 'IDEC', 'DEPICT', 'DTC', 'DTCR', 'RES_CNN+CNRV+IDEC', 'RES_CNN+CNRV+NONE', 'SDCN', 'SOM_VAE', 'ClusterGAN', 'VADE']
+        clsc_list = ['k-AVG', 'k-DBA', 'k-SC', 'k-Shape', 'KKM_GAK', 'KKM_KDTW', 'KKM_RBF', 'KKM_SINK', 'SC_GAK', 'SC_KDTW', 'SC_RBF', 'SC_SINK', 
+           'DBSCAN-ED', 'DBSCAN-MSM', 'DBSCAN-SBD', 'DP-ED', 'DP-MSM', 'DP-SBD', 'OPTICS-ED', 'OPTICS-MSM', 'OPTICS-SBD', 
+           'PAM-ED', 'PAM-SBD', 'PAM-MSM', 'PAM-LCSS', 'PAM-TWED', 'PAM-SWALE', 'PAM-DTW', 'PAM-EDR', 'PAM-ERP',
+           'AGG-A-ED', 'AGG-A-MSM', 'AGG-A-SBD', 'AGG-C-ED', 'AGG-C-MSM', 'AGG-C-SBD', 'AGG-S-ED', 'AGG-S-MSM', 'AGG-S-SBD', 'BIRCH',
+           'SS-DTW', 'FeatTS', 'UShapelets-50', 'GMM', 'AP-ED', 'AP-MSM', 'AP-SBD',
+           'AR-COEFF', 'AR-PVAL', 'CATCH22', 'ES-COEFF', 'LPCC']
+        
+        container_method = st.container()
+        all_dl_measures = st.checkbox("Select all", key='all_dl_measures')
+        if all_dl_measures: all_dl_measures_family = container_method.multiselect('Select deep learning methods', sorted(dl_list), sorted(dl_list), key='selector_all_dl_measures')
+        else: all_dl_measures_family = container_method.multiselect('Select Deep Learning Methods', sorted(dl_list), key='selector_dl_measures')
+
+        clsc_measures = st.selectbox('Select a classical method', tuple(clsc_list))
+
+        selected_methods = all_dl_measures_family + [clsc_measures]
+
+        df = pd.read_csv('data/results.csv')
+        df = df.loc[df['Dataset'].isin(datasets)][[method_g + '-' + metric_name for method_g in selected_methods]]
+        df.insert(0, 'Datasets', datasets)
+
+        if len(datasets) > 0:
+            if len(selected_methods) > 1 and len(selected_methods) < 14:
+                def stat_plots(df_toplot):
+                    def cd_diagram_process(df, rank_ascending=False):
+                        df = df.rank(ascending=rank_ascending, axis=1)
+                        return df
+
+                    df_toplot.drop(columns=df_toplot.columns[0], axis=1, inplace=True)
+
+                    rank_ri_df  = cd_diagram_process(df_toplot)
+                    rank_df = rank_ri_df.mean().sort_values()
+
+                    names = []
+                    for method in rank_df.index.values:
+                        names.append(method[:-len(metric_name)-1])
+
+                    avranks =  rank_df.values
+                    cd = compute_CD(avranks, 128, "0.1")
+                    graph_ranks(avranks, names, cd=cd, width=9, textspace=1.25)
+                    fig = plt.show()
+                    st.pyplot(fig)
+
+                stat_plots(df)
+
 
 
 def plot_box_plot(df, measure_name, methods_family, datasets, scale='linear'):
@@ -221,7 +342,7 @@ with st.sidebar:
 
 
 df = pd.read_csv('data/results.csv')
-tab_desc, tab_acc, tab_time, tab_stats, tab_dataset, tab_method = st.tabs(["Description", "Evaluation", "Execution Time", "Statistical Tests", "Datasets", "Methods"])  
+tab_desc, tab_acc, tab_time, tab_stats, tab_misconceptions, tab_dataset, tab_method = st.tabs(["Description", "Evaluation", "Execution Time", "Statistical Tests", "Misconceptions", "Datasets", "Methods"])  
 
 with tab_desc:
     st.markdown('# TSClustering')
@@ -241,6 +362,10 @@ with tab_stats:
     st.markdown('# Statistical Tests')
     df_toplot = generate_dataframe(df, datasets, methods_family, metric_name)
     plot_stat_plot(df_toplot, metric_name, methods_family, datasets)
+
+with tab_misconceptions:
+    st.markdown('# Misconceptions')
+    plot_misconceptions_plot(metric_name, datasets)
 
 with tab_dataset:
     st.markdown('# Dataset Description')
