@@ -31,30 +31,30 @@ def plot_stat_plot(df, metric_name, methods_family, datasets):
     
     df = df.loc[df['Datasets'].isin(datasets)][[method_g + '-' + metric_name for method_g in stat_methods_family]]
     df.insert(0, 'Datasets', datasets)
-    print(df)
 
-    if len(stat_methods_family) > 1 and len(stat_methods_family) < 13:
-        def stat_plots(df_toplot):
-            def cd_diagram_process(df, rank_ascending=False):
-                df = df.rank(ascending=rank_ascending, axis=1)
-                return df
+    if len(datasets) > 0:
+        if len(stat_methods_family) > 1 and len(stat_methods_family) < 13:
+            def stat_plots(df_toplot):
+                def cd_diagram_process(df, rank_ascending=False):
+                    df = df.rank(ascending=rank_ascending, axis=1)
+                    return df
 
-            df_toplot.drop(columns=df_toplot.columns[0], axis=1, inplace=True)
+                df_toplot.drop(columns=df_toplot.columns[0], axis=1, inplace=True)
 
-            rank_ri_df  = cd_diagram_process(df_toplot)
-            rank_df = rank_ri_df.mean().sort_values()
+                rank_ri_df  = cd_diagram_process(df_toplot)
+                rank_df = rank_ri_df.mean().sort_values()
 
-            names = []
-            for method in rank_df.index.values:
-                names.append(method[:-3])
+                names = []
+                for method in rank_df.index.values:
+                    names.append(method[:-3])
 
-            avranks =  rank_df.values
-            cd = compute_CD(avranks, 128, "0.1")
-            graph_ranks(avranks, names, cd=cd, width=9, textspace=1.25)
-            fig = plt.show()
-            st.pyplot(fig)
+                avranks =  rank_df.values
+                cd = compute_CD(avranks, 128, "0.1")
+                graph_ranks(avranks, names, cd=cd, width=9, textspace=1.25)
+                fig = plt.show()
+                st.pyplot(fig)
 
-        stat_plots(df)
+            stat_plots(df)
     
 
 
