@@ -367,7 +367,6 @@ def plot_box_plot(df, measure_name, methods_family, datasets, scale='linear'):
                 st.plotly_chart(fig, theme="streamlit", use_container_width=False)
 
         
-@st.cache_data
 def generate_dataframe(df, datasets, methods_family, metric_name):
     df = df.loc[df['Dataset'].isin(datasets)][[method_g + '-' + metric_name for method_g in methods_family]]
     df.insert(0, 'Datasets', datasets)
