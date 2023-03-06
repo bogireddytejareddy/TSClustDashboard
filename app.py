@@ -82,7 +82,7 @@ def plot_time_plot(measure_name):
                 sizemin=4
             )
         )])
-        fig.update_layout(showlegend=False, width=800, height=600, template="plotly_white", font=dict(family="Arial",
+        fig.update_layout(showlegend=False, width=800, height=600, template="plotly_white", font=dict(
                                                         size=19,
                                                         color="black"))
 
@@ -300,7 +300,7 @@ def plot_box_plot(df, measure_name, methods_family, datasets, scale='linear'):
                               width=1290, 
                               height=600, 
                               template="plotly_white", 
-                              font=dict(family="Arial",
+                              font=dict(
                                         size=39,
                                         color="black"))
             fig.update_xaxes(tickfont_size=15, ticks="outside", ticklen=20, tickwidth=2)
