@@ -6,4 +6,5 @@ numpy
 seaborn
 streamlit-aggrid
 plotly
+scipy
 ipywidgets==7.0.0
