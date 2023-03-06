@@ -10,8 +10,12 @@ from PIL import Image
 from constant import *
 from st_aggrid import AgGrid, GridOptionsBuilder
 import plotly.graph_objects as go
+import Orange
+from statistical_test import graph_ranks
 
 st. set_page_config(layout="wide") 
+st.set_option('deprecation.showPyplotGlobalUse', False)
+
 #plt.style.use('dark_background')
 df = pd.read_csv('data/results.csv')
 characteristics_df = pd.read_csv('data/characteristics.csv')
@@ -19,6 +23,39 @@ characteristics_df.reset_index()
 characteristics_df.drop(columns=characteristics_df.columns[0], axis=1, inplace=True)
 characteristics_df.columns = ['Name', 'NumOfTrainingSamples', 'NumOfTestingSample', 'NumOfSamples', 'SeqLength', 'NumOfClusters', 'Type']
 characteristics_df = characteristics_df[['Name', 'NumOfSamples', 'SeqLength', 'NumOfClusters', 'Type']]
+
+
+def plot_stat_plot(df, metric_name, methods_family, datasets):
+    container_method = st.container()
+    stat_methods_family = container_method.multiselect('Select a group of methods', sorted(methods_family), key='selector_stat_methods')
+    
+    df = df.loc[df['Datasets'].isin(datasets)][[method_g + '-' + metric_name for method_g in stat_methods_family]]
+    df.insert(0, 'Datasets', datasets)
+    print(df)
+
+    if len(stat_methods_family) > 1 and len(stat_methods_family) < 13:
+        def stat_plots(df_toplot):
+            def cd_diagram_process(df, rank_ascending=False):
+                df = df.rank(ascending=rank_ascending, axis=1)
+                return df
+
+            df_toplot.drop(columns=df_toplot.columns[0], axis=1, inplace=True)
+
+            rank_ri_df  = cd_diagram_process(df_toplot)
+            rank_df = rank_ri_df.mean().sort_values()
+
+            names = []
+            for method in rank_df.index.values:
+                names.append(method[:-3])
+
+            avranks =  rank_df.values
+            cd = Orange.evaluation.compute_CD(avranks, 128, "0.1")
+            graph_ranks(avranks, names, cd=cd, width=9, textspace=1.25)
+            fig = plt.show()
+            st.pyplot(fig)
+
+        stat_plots(df)
+    
 
 
 def plot_time_plot(measure_name):
@@ -184,7 +221,7 @@ with st.sidebar:
 
 
 df = pd.read_csv('data/results.csv')
-tab_desc, tab_acc, tab_time, tab_dataset, tab_method = st.tabs(["Description", "Evaluation", "Execution Time", "Datasets", "Methods"])  
+tab_desc, tab_acc, tab_time, tab_stats, tab_dataset, tab_method = st.tabs(["Description", "Evaluation", "Execution Time", "Statistical Tests", "Datasets", "Methods"])  
 
 with tab_desc:
     st.markdown('# TSClustering')
@@ -199,6 +236,11 @@ with tab_acc:
 with tab_time:
     st.markdown('# Execution Time')
     plot_time_plot(metric_name)
+
+with tab_stats:
+    st.markdown('# Statistical Tests')
+    df_toplot = generate_dataframe(df, datasets, methods_family, metric_name)
+    plot_stat_plot(df_toplot, metric_name, methods_family, datasets)
 
 with tab_dataset:
     st.markdown('# Dataset Description')
