@@ -10,7 +10,6 @@ matplotlib.rcParams['font.sans-serif'] = 'Arial'
 
 import operator
 import math
-import networkx
 
 
 def graph_ranks(avranks, names, cd=None, cdmethod=None, lowv=None, highv=None,
