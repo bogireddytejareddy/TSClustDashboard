@@ -27,7 +27,7 @@ characteristics_df = characteristics_df[['Name', 'NumOfSamples', 'SeqLength', 'N
 
 def plot_stat_plot(df, metric_name, methods_family, datasets):
     container_method = st.container()
-    stat_methods_family = container_method.multiselect('Select a group of methods', sorted(methods_family), key='selector_stat_methods')
+    stat_methods_family = container_method.multiselect('Select a group of methods (atleast 1 and utmost 12 methods)', sorted(methods_family), key='selector_stat_methods')
     
     df = df.loc[df['Datasets'].isin(datasets)][[method_g + '-' + metric_name for method_g in stat_methods_family]]
     df.insert(0, 'Datasets', datasets)
