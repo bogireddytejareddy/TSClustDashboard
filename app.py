@@ -10,7 +10,6 @@ from PIL import Image
 from constant import *
 from st_aggrid import AgGrid, GridOptionsBuilder
 import plotly.graph_objects as go
-import Orange
 from statistical_test import graph_ranks
 
 st. set_page_config(layout="wide") 
@@ -49,7 +48,7 @@ def plot_stat_plot(df, metric_name, methods_family, datasets):
                 names.append(method[:-3])
 
             avranks =  rank_df.values
-            cd = Orange.evaluation.compute_CD(avranks, 128, "0.1")
+            cd = compute_CD(avranks, 128, "0.1")
             graph_ranks(avranks, names, cd=cd, width=9, textspace=1.25)
             fig = plt.show()
             st.pyplot(fig)
