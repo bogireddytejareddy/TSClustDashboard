@@ -7,4 +7,3 @@ seaborn
 streamlit-aggrid
 plotly
 ipywidgets==7.0.0
-orange3==3.30.0
