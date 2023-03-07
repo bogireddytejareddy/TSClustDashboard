@@ -98,7 +98,7 @@ def plot_misconceptions_plot(metric_name, datasets):
         container_method = st.container()
         all_elastic_measures = st.checkbox("Select all", key='all_elastic_measures')
         if all_elastic_measures: all_elastic_measures_family = container_method.multiselect('Select elastic measures', sorted(elastic_measures_list), sorted(elastic_measures_list), key='selector_all_elastic_measures')
-        else: all_elastic_measures_family = container_method.multiselect('Select elastic measures', sorted(elastic_measures_list), key='selector_elastic_measures', , default=['PAM-ED', 'PAM-MSM', 'PAM-TWED', 'PAM-DTW', 'PAM-ERP'])
+        else: all_elastic_measures_family = container_method.multiselect('Select elastic measures', sorted(elastic_measures_list), key='selector_elastic_measures', default=['PAM-ED', 'PAM-MSM', 'PAM-TWED', 'PAM-DTW', 'PAM-ERP'])
 
         df = pd.read_csv('data/results.csv')
         df = df.loc[df['Dataset'].isin(datasets)][[method_g + '-' + metric_name for method_g in all_elastic_measures_family]]
@@ -132,7 +132,7 @@ def plot_misconceptions_plot(metric_name, datasets):
         container_method = st.container()
         all_kernel_measures = st.checkbox("Select all",key='all_kernel_measures')
         if all_kernel_measures: all_kernel_measures_family = container_method.multiselect('Select kernel measures', sorted(kernel_measures_list), sorted(kernel_measures_list), key='selector_all_kernel_measures')
-        else: all_kernel_measures_family = container_method.multiselect('Select kernel measures', sorted(kernel_measures_list), key='selector_kernel_measures', , default=['KKM_GAK', 'KKM_KDTW', 'KKM_RBF', 'KKM_SINK'])
+        else: all_kernel_measures_family = container_method.multiselect('Select kernel measures', sorted(kernel_measures_list), key='selector_kernel_measures', default=['KKM_GAK', 'KKM_KDTW', 'KKM_RBF', 'KKM_SINK'])
         
         df = pd.read_csv('data/results.csv')
         df = df.loc[df['Dataset'].isin(datasets)][[method_g + '-' + metric_name for method_g in all_kernel_measures_family]]
