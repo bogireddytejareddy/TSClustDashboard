@@ -98,7 +98,7 @@ def plot_misconceptions_plot(metric_name, datasets):
         container_method = st.container()
         all_elastic_measures = st.checkbox("Select all", key='all_elastic_measures')
         if all_elastic_measures: all_elastic_measures_family = container_method.multiselect('Select elastic measures', sorted(elastic_measures_list), sorted(elastic_measures_list), key='selector_all_elastic_measures')
-        else: all_elastic_measures_family = container_method.multiselect('Select elastic measures', sorted(elastic_measures_list), key='selector_elastic_measures')
+        else: all_elastic_measures_family = container_method.multiselect('Select elastic measures', sorted(elastic_measures_list), key='selector_elastic_measures', , default=['PAM-ED', 'PAM-MSM', 'PAM-TWED', 'PAM-DTW', 'PAM-ERP'])
 
         df = pd.read_csv('data/results.csv')
         df = df.loc[df['Dataset'].isin(datasets)][[method_g + '-' + metric_name for method_g in all_elastic_measures_family]]
@@ -132,7 +132,7 @@ def plot_misconceptions_plot(metric_name, datasets):
         container_method = st.container()
         all_kernel_measures = st.checkbox("Select all",key='all_kernel_measures')
         if all_kernel_measures: all_kernel_measures_family = container_method.multiselect('Select kernel measures', sorted(kernel_measures_list), sorted(kernel_measures_list), key='selector_all_kernel_measures')
-        else: all_kernel_measures_family = container_method.multiselect('Select kernel measures', sorted(kernel_measures_list), key='selector_kernel_measures')
+        else: all_kernel_measures_family = container_method.multiselect('Select kernel measures', sorted(kernel_measures_list), key='selector_kernel_measures', , default=['KKM_GAK', 'KKM_KDTW', 'KKM_RBF', 'KKM_SINK'])
         
         df = pd.read_csv('data/results.csv')
         df = df.loc[df['Dataset'].isin(datasets)][[method_g + '-' + metric_name for method_g in all_kernel_measures_family]]
@@ -163,13 +163,13 @@ def plot_misconceptions_plot(metric_name, datasets):
                 stat_plots(df)
 
     with tab5:
-        unsupervised_list = ['k-Shape', 'PAM-Unsupervised-MSM', 'PAM-Unsupervised-LCSS', 'PAM-Unsupervised-TWED', 'PAM-Unsupervised-SWALE', 'PAM-Unsupervised-DTW', 'PAM-Unsupervised-EDR']
-        supervised_list = ['k-Shape', 'PAM-Supervised-MSM', 'PAM-Supervised-LCSS', 'PAM-Supervised-TWED', 'PAM-Supervised-SWALE', 'PAM-Supervised-DTW', 'PAM-Supervised-EDR']
+        unsupervised_list = ['k-Shape', 'PAM-Unsupervised-MSM', 'PAM-Unsupervised-LCSS', 'PAM-Unsupervised-TWED', 'PAM-Unsupervised-SWALE', 'PAM-Unsupervised-DTW', 'PAM-Unsupervised-EDR', , 'PAM-Unsupervised-ERP']
+        supervised_list = ['k-Shape', 'PAM-Supervised-MSM', 'PAM-Supervised-LCSS', 'PAM-Supervised-TWED', 'PAM-Supervised-SWALE', 'PAM-Supervised-DTW', 'PAM-Supervised-EDR', , 'PAM-Supervised-ERP']
 
         container_method = st.container()
         all_supervised_measures = st.checkbox("Select all", key='all_supervised_measures')
         if all_supervised_measures: all_supervised_measures_family = container_method.multiselect('Select supervised elastic measures', sorted(supervised_list), sorted(supervised_list), key='selector_all_supervised_measures')
-        else: all_supervised_measures_family = container_method.multiselect('Select supervised elastic measures', sorted(supervised_list), key='selector_supervised_measures')
+        else: all_supervised_measures_family = container_method.multiselect('Select supervised elastic measures', sorted(supervised_list), key='selector_supervised_measures', default=['k-Shape', 'PAM-Supervised-MSM', 'PAM-Supervised-TWED', 'PAM-Supervised-ERP'])
         
         df = pd.read_csv('data/supervised-unsupervised.csv')
         df = df.loc[df['Name'].isin(datasets)][[method_g + '-' + metric_name for method_g in all_supervised_measures_family]]
@@ -202,7 +202,7 @@ def plot_misconceptions_plot(metric_name, datasets):
         container_method = st.container()
         all_unsupervised_measures = st.checkbox("Select all", key='all_unsupervised_measures')
         if all_unsupervised_measures: all_unsupervised_measures_family = container_method.multiselect('Select unsupervised elastic measures', sorted(unsupervised_list), sorted(unsupervised_list), key='selector_all_unsupervised_measures')
-        else: all_unsupervised_measures_family = container_method.multiselect('Select unsupervised elastic measures', sorted(unsupervised_list), key='selector_unsupervised_measures')
+        else: all_unsupervised_measures_family = container_method.multiselect('Select unsupervised elastic measures', sorted(unsupervised_list), key='selector_unsupervised_measures', default=['k-Shape', 'PAM-Unsupervised-MSM', 'PAM-Unsupervised-TWED', 'PAM-Unsupervised-ERP'])
         
         df = pd.read_csv('data/supervised-unsupervised.csv')
         df = df.loc[df['Name'].isin(datasets)][[method_g + '-' + metric_name for method_g in all_unsupervised_measures_family]]
@@ -246,7 +246,7 @@ def plot_misconceptions_plot(metric_name, datasets):
         if all_dl_measures: all_dl_measures_family = container_method.multiselect('Select deep learning methods', sorted(dl_list), sorted(dl_list), key='selector_all_dl_measures')
         else: all_dl_measures_family = container_method.multiselect('Select Deep Learning Methods', sorted(dl_list), key='selector_dl_measures')
 
-        clsc_measures = st.selectbox('Select a classical method', tuple(clsc_list))
+        clsc_measures = st.selectbox('Select a classical method', tuple(clsc_list), index=3)
 
         selected_methods = all_dl_measures_family + [clsc_measures]
 
