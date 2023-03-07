@@ -163,8 +163,8 @@ def plot_misconceptions_plot(metric_name, datasets):
                 stat_plots(df)
 
     with tab5:
-        unsupervised_list = ['k-Shape', 'PAM-Unsupervised-MSM', 'PAM-Unsupervised-LCSS', 'PAM-Unsupervised-TWED', 'PAM-Unsupervised-SWALE', 'PAM-Unsupervised-DTW', 'PAM-Unsupervised-EDR', , 'PAM-Unsupervised-ERP']
-        supervised_list = ['k-Shape', 'PAM-Supervised-MSM', 'PAM-Supervised-LCSS', 'PAM-Supervised-TWED', 'PAM-Supervised-SWALE', 'PAM-Supervised-DTW', 'PAM-Supervised-EDR', , 'PAM-Supervised-ERP']
+        unsupervised_list = ['k-Shape', 'PAM-Unsupervised-MSM', 'PAM-Unsupervised-LCSS', 'PAM-Unsupervised-TWED', 'PAM-Unsupervised-SWALE', 'PAM-Unsupervised-DTW', 'PAM-Unsupervised-EDR', 'PAM-Unsupervised-ERP']
+        supervised_list = ['k-Shape', 'PAM-Supervised-MSM', 'PAM-Supervised-LCSS', 'PAM-Supervised-TWED', 'PAM-Supervised-SWALE', 'PAM-Supervised-DTW', 'PAM-Supervised-EDR', 'PAM-Supervised-ERP']
 
         container_method = st.container()
         all_supervised_measures = st.checkbox("Select all", key='all_supervised_measures')
