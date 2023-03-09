@@ -243,8 +243,8 @@ def plot_misconceptions_plot(metric_name, datasets):
         
         container_method = st.container()
         all_dl_measures = st.checkbox("Select all", key='all_dl_measures')
-        if all_dl_measures: all_dl_measures_family = container_method.multiselect('Select deep learning methods', sorted(dl_list), sorted(dl_list), key='selector_all_dl_measures')
-        else: all_dl_measures_family = container_method.multiselect('Select Deep Learning Methods', sorted(dl_list), key='selector_dl_measures')
+        if all_dl_measures: all_dl_measures_family = container_method.multiselect('Select deep learning methods', sorted(dl_list), sorted(dl_list), key='selector_all_dl_measures', default=dl_list)
+        else: all_dl_measures_family = container_method.multiselect('Select Deep Learning Methods', sorted(dl_list), key='selector_dl_measures', default=dl_list)
 
         clsc_measures = st.selectbox('Select a classical method', tuple(clsc_list), index=3)
 
