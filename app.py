@@ -374,7 +374,7 @@ def generate_dataframe(df, datasets, methods_family, metric_name):
       
     
 with st.sidebar:
-    st.markdown('# TSClustering') 
+    st.markdown('# TSClustOdyssey') 
     metric_name = st.selectbox('Pick an assessment metric', list_measures)
 
     container_dataset = st.container()  
