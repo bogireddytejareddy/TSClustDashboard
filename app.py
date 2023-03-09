@@ -409,7 +409,7 @@ with st.sidebar:
 
 
 df = pd.read_csv('data/results.csv')
-tab_desc, tab_acc, tab_time, tab_stats, tab_misconceptions, tab_dataset, tab_method = st.tabs(["Description", "Evaluation", "Execution Time", "Statistical Tests", "Misconceptions", "Datasets", "Methods"])  
+tab_desc, tab_acc, tab_time, tab_stats, tab_misconceptions, tab_dataset, tab_method = st.tabs(["Description", "Evaluation", "Runtime", "Statistical Tests", "Misconceptions", "Datasets", "Methods"])  
 
 with tab_desc:
     st.markdown('# TSClustOdyssey')
@@ -422,7 +422,7 @@ with tab_acc:
     plot_box_plot(df_toplot, measure_name=metric_name, methods_family=methods_family, datasets=datasets)
     
 with tab_time:
-    st.markdown('# Execution Time')
+    st.markdown('#  Runtime')
     plot_time_plot(metric_name)
 
 with tab_stats:
