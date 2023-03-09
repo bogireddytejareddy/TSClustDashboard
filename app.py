@@ -412,7 +412,7 @@ df = pd.read_csv('data/results.csv')
 tab_desc, tab_acc, tab_time, tab_stats, tab_misconceptions, tab_dataset, tab_method = st.tabs(["Description", "Evaluation", "Execution Time", "Statistical Tests", "Misconceptions", "Datasets", "Methods"])  
 
 with tab_desc:
-    st.markdown('# TSClustering')
+    st.markdown('# TSClustOdyssey')
     st.markdown(description_intro)
 
 with tab_acc:
