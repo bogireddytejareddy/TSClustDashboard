@@ -61,7 +61,7 @@ def plot_time_plot(measure_name):
     container_method = st.container()
     all_time_method = st.checkbox("Select all",key='all_time_method')
     if all_time_method: time_methods_family = container_method.multiselect('Select a group of methods', sorted(time_methods), sorted(time_methods), key='selector_time_methods_all')
-    else: time_methods_family = container_method.multiselect('Select a group of methods', sorted(time_methods), key='selector_time_methods')
+    else: time_methods_family = container_method.multiselect('Select a group of methods', sorted(time_methods), key='selector_time_methods', default=['k-Shape', 'DEC', 'IDEC', 'DTC', 'DTCR', 'SOM-VAE', 'DCN', 'DEPICT', 'SDCN', 'ClusterGAN', 'VADE'])
 
 
     if len(time_methods_family) > 0:
@@ -244,7 +244,7 @@ def plot_misconceptions_plot(metric_name, datasets):
         container_method = st.container()
         all_dl_measures = st.checkbox("Select all", key='all_dl_measures')
         if all_dl_measures: all_dl_measures_family = container_method.multiselect('Select deep learning methods', sorted(dl_list), sorted(dl_list), key='selector_all_dl_measures')
-        else: all_dl_measures_family = container_method.multiselect('Select Deep Learning Methods', sorted(dl_list), key='selector_dl_measures', default=dl_list)
+        else: all_dl_measures_family = container_method.multiselect('Select Deep Learning Methods', sorted(dl_list), key='selector_dl_measures', default=['DCN', 'DEC', 'IDEC', 'DEPICT', 'DTC', 'DTCR', 'SDCN', 'SOM_VAE', 'ClusterGAN', 'VADE'])
 
         clsc_measures = st.selectbox('Select a classical method', tuple(clsc_list), index=3)
 
@@ -366,9 +366,342 @@ def plot_box_plot(df, measure_name, methods_family, datasets, scale='linear'):
                 fig.layout.on_change(do_zoom, 'xaxis.range', 'yaxis.range')
                 st.plotly_chart(fig)
 
+
+def plot_classwise(all_df, metric_name, datasets):
+    tab7, tab8, tab9, tab10, tab11, tab12, tab13 = st.tabs(["Partitional", "Kernel", "Density", "Hierarchical", "Distribution", "Model and Feature", "Deep Learning"])
+    with tab7:
+        df = all_df.loc[all_df['Dataset'].isin(datasets)][[method_g + '-' + metric_name for method_g in ['k-AVG', 'k-DBA', 'k-SC', 'k-Shape']]]
+        df = df[df.mean().sort_values().index]
+        fig = go.Figure()
+        for i, cols in enumerate(df.columns[:]):
+            fig.add_trace(go.Box(y=df[cols], name=cols[:-len(metric_name)-1],
+                                            marker=dict(
+                                            opacity=1,
+                                            color='rgb(8,81,156)',
+                                            outliercolor='rgba(219, 64, 82, 0.6)',
+                                            line=dict(
+                                                outliercolor='rgba(219, 64, 82, 0.6)',
+                                                outlierwidth=2)),
+                                        line_color='rgb(8,81,156)'
+                                    ))
+        fig.update_layout(showlegend=False, 
+                              width=1290, 
+                              height=600, 
+                              template="plotly_white", 
+                              font=dict(
+                                        size=39,
+                                        color="black"))
+        fig.update_xaxes(tickfont_size=15, ticks="outside", ticklen=20, tickwidth=2)
+        st.plotly_chart(fig)
+
+        if len(datasets) > 0:
+            def stat_plots(df_toplot):
+                def cd_diagram_process(df, rank_ascending=False):
+                    df = df.rank(ascending=rank_ascending, axis=1)
+                    return df
+                
+                rank_ri_df  = cd_diagram_process(df_toplot)
+                rank_df = rank_ri_df.mean().sort_values()
+
+                names = []
+                for method in rank_df.index.values:
+                    names.append(method[:-len(metric_name)-1])
+
+                avranks =  rank_df.values
+                cd = compute_CD(avranks, 128, "0.1")
+                graph_ranks(avranks, names, cd=cd, width=9, textspace=1.25)
+                fig = plt.show()
+                st.pyplot(fig)
+            stat_plots(df)
+        
+        AgGrid(df)
+
+    with tab8:
+        df = all_df.loc[all_df['Dataset'].isin(datasets)][[method_g + '-' + metric_name for method_g in ['KKM_GAK', 'KKM_KDTW', 'KKM_RBF', 'KKM_SINK', 'SC_GAK', 'SC_KDTW', 'SC_RBF', 'SC_SINK']]]
+        df = df[df.mean().sort_values().index]
+        fig = go.Figure()
+        for i, cols in enumerate(df.columns[:]):
+            fig.add_trace(go.Box(y=df[cols], name=cols[:-len(metric_name)-1],
+                                            marker=dict(
+                                            opacity=1,
+                                            color='rgb(8,81,156)',
+                                            outliercolor='rgba(219, 64, 82, 0.6)',
+                                            line=dict(
+                                                outliercolor='rgba(219, 64, 82, 0.6)',
+                                                outlierwidth=2)),
+                                        line_color='rgb(8,81,156)'
+                                    ))
+        fig.update_layout(showlegend=False, 
+                              width=1290, 
+                              height=600, 
+                              template="plotly_white", 
+                              font=dict(
+                                        size=39,
+                                        color="black"))
+        fig.update_xaxes(tickfont_size=15, ticks="outside", ticklen=20, tickwidth=2)
+        st.plotly_chart(fig)
+
+        if len(datasets) > 0:
+            def stat_plots(df_toplot):
+                def cd_diagram_process(df, rank_ascending=False):
+                    df = df.rank(ascending=rank_ascending, axis=1)
+                    return df
+                
+                rank_ri_df  = cd_diagram_process(df_toplot)
+                rank_df = rank_ri_df.mean().sort_values()
+
+                names = []
+                for method in rank_df.index.values:
+                    names.append(method[:-len(metric_name)-1])
+
+                avranks =  rank_df.values
+                cd = compute_CD(avranks, 128, "0.1")
+                graph_ranks(avranks, names, cd=cd, width=9, textspace=1.25)
+                fig = plt.show()
+                st.pyplot(fig)
+            stat_plots(df)
+
+        AgGrid(df)
+
+    with tab9:
+        df = all_df.loc[all_df['Dataset'].isin(datasets)][[method_g + '-' + metric_name for method_g in ['DBSCAN-ED', 'DBSCAN-MSM', 'DBSCAN-SBD', 'DP-ED', 'DP-MSM', 'DP-SBD', 'OPTICS-ED', 'OPTICS-MSM', 'OPTICS-SBD']]]
+        df = df[df.mean().sort_values().index]
+        fig = go.Figure()
+        for i, cols in enumerate(df.columns[:]):
+            fig.add_trace(go.Box(y=df[cols], name=cols[:-len(metric_name)-1],
+                                            marker=dict(
+                                            opacity=1,
+                                            color='rgb(8,81,156)',
+                                            outliercolor='rgba(219, 64, 82, 0.6)',
+                                            line=dict(
+                                                outliercolor='rgba(219, 64, 82, 0.6)',
+                                                outlierwidth=2)),
+                                        line_color='rgb(8,81,156)'
+                                    ))
+        fig.update_layout(showlegend=False, 
+                              width=1290, 
+                              height=600, 
+                              template="plotly_white", 
+                              font=dict(
+                                        size=39,
+                                        color="black"))
+        fig.update_xaxes(tickfont_size=15, ticks="outside", ticklen=20, tickwidth=2)
+        st.plotly_chart(fig)
+
+        if len(datasets) > 0:
+            def stat_plots(df_toplot):
+                def cd_diagram_process(df, rank_ascending=False):
+                    df = df.rank(ascending=rank_ascending, axis=1)
+                    return df
+                
+                rank_ri_df  = cd_diagram_process(df_toplot)
+                rank_df = rank_ri_df.mean().sort_values()
+
+                names = []
+                for method in rank_df.index.values:
+                    names.append(method[:-len(metric_name)-1])
+
+                avranks =  rank_df.values
+                cd = compute_CD(avranks, 128, "0.1")
+                graph_ranks(avranks, names, cd=cd, width=9, textspace=1.25)
+                fig = plt.show()
+                st.pyplot(fig)
+            stat_plots(df)
+
+        AgGrid(df)
+
+    with tab10:
+        df = all_df.loc[all_df['Dataset'].isin(datasets)][[method_g + '-' + metric_name for method_g in ['AGG-A-ED', 'AGG-A-MSM', 'AGG-A-SBD', 'AGG-C-ED', 'AGG-C-MSM', 'AGG-C-SBD', 'AGG-S-ED', 'AGG-S-MSM', 'AGG-S-SBD', 'BIRCH']]]
+        df = df[df.mean().sort_values().index]
+        fig = go.Figure()
+        for i, cols in enumerate(df.columns[:]):
+            fig.add_trace(go.Box(y=df[cols], name=cols[:-len(metric_name)-1],
+                                            marker=dict(
+                                            opacity=1,
+                                            color='rgb(8,81,156)',
+                                            outliercolor='rgba(219, 64, 82, 0.6)',
+                                            line=dict(
+                                                outliercolor='rgba(219, 64, 82, 0.6)',
+                                                outlierwidth=2)),
+                                        line_color='rgb(8,81,156)'
+                                    ))
+        fig.update_layout(showlegend=False, 
+                              width=1290, 
+                              height=600, 
+                              template="plotly_white", 
+                              font=dict(
+                                        size=39,
+                                        color="black"))
+        fig.update_xaxes(tickfont_size=15, ticks="outside", ticklen=20, tickwidth=2)
+        st.plotly_chart(fig)
+
+        if len(datasets) > 0:
+            def stat_plots(df_toplot):
+                def cd_diagram_process(df, rank_ascending=False):
+                    df = df.rank(ascending=rank_ascending, axis=1)
+                    return df
+                
+                rank_ri_df  = cd_diagram_process(df_toplot)
+                rank_df = rank_ri_df.mean().sort_values()
+
+                names = []
+                for method in rank_df.index.values:
+                    names.append(method[:-len(metric_name)-1])
+
+                avranks =  rank_df.values
+                cd = compute_CD(avranks, 128, "0.1")
+                graph_ranks(avranks, names, cd=cd, width=9, textspace=1.25)
+                fig = plt.show()
+                st.pyplot(fig)
+            stat_plots(df)
+
+        AgGrid(df)
+
+    with tab11:
+        df = all_df.loc[all_df['Dataset'].isin(datasets)][[method_g + '-' + metric_name for method_g in ['GMM', 'AP-ED', 'AP-MSM', 'AP-SBD']]]
+        df = df[df.mean().sort_values().index]
+        fig = go.Figure()
+        for i, cols in enumerate(df.columns[:]):
+            fig.add_trace(go.Box(y=df[cols], name=cols[:-len(metric_name)-1],
+                                            marker=dict(
+                                            opacity=1,
+                                            color='rgb(8,81,156)',
+                                            outliercolor='rgba(219, 64, 82, 0.6)',
+                                            line=dict(
+                                                outliercolor='rgba(219, 64, 82, 0.6)',
+                                                outlierwidth=2)),
+                                        line_color='rgb(8,81,156)'
+                                    ))
+        fig.update_layout(showlegend=False, 
+                              width=1290, 
+                              height=600, 
+                              template="plotly_white", 
+                              font=dict(
+                                        size=39,
+                                        color="black"))
+        fig.update_xaxes(tickfont_size=15, ticks="outside", ticklen=20, tickwidth=2)
+        st.plotly_chart(fig)
+
+        if len(datasets) > 0:
+            def stat_plots(df_toplot):
+                def cd_diagram_process(df, rank_ascending=False):
+                    df = df.rank(ascending=rank_ascending, axis=1)
+                    return df
+                
+                rank_ri_df  = cd_diagram_process(df_toplot)
+                rank_df = rank_ri_df.mean().sort_values()
+
+                names = []
+                for method in rank_df.index.values:
+                    names.append(method[:-len(metric_name)-1])
+
+                avranks =  rank_df.values
+                cd = compute_CD(avranks, 128, "0.1")
+                graph_ranks(avranks, names, cd=cd, width=9, textspace=1.25)
+                fig = plt.show()
+                st.pyplot(fig)
+            stat_plots(df)
+
+        AgGrid(df)
+
+    with tab12:
+        df = all_df.loc[all_df['Dataset'].isin(datasets)][[method_g + '-' + metric_name for method_g in ['AR-COEFF', 'AR-PVAL', 'CATCH22', 'ES-COEFF', 'LPCC']]]
+        df = df[df.mean().sort_values().index]
+        fig = go.Figure()
+        for i, cols in enumerate(df.columns[:]):
+            fig.add_trace(go.Box(y=df[cols], name=cols[:-len(metric_name)-1],
+                                            marker=dict(
+                                            opacity=1,
+                                            color='rgb(8,81,156)',
+                                            outliercolor='rgba(219, 64, 82, 0.6)',
+                                            line=dict(
+                                                outliercolor='rgba(219, 64, 82, 0.6)',
+                                                outlierwidth=2)),
+                                        line_color='rgb(8,81,156)'
+                                    ))
+        fig.update_layout(showlegend=False, 
+                              width=1290, 
+                              height=600, 
+                              template="plotly_white", 
+                              font=dict(
+                                        size=39,
+                                        color="black"))
+        fig.update_xaxes(tickfont_size=15, ticks="outside", ticklen=20, tickwidth=2)
+        st.plotly_chart(fig)
+
+        if len(datasets) > 0:
+            def stat_plots(df_toplot):
+                def cd_diagram_process(df, rank_ascending=False):
+                    df = df.rank(ascending=rank_ascending, axis=1)
+                    return df
+                
+                rank_ri_df  = cd_diagram_process(df_toplot)
+                rank_df = rank_ri_df.mean().sort_values()
+
+                names = []
+                for method in rank_df.index.values:
+                    names.append(method[:-len(metric_name)-1])
+
+                avranks =  rank_df.values
+                cd = compute_CD(avranks, 128, "0.1")
+                graph_ranks(avranks, names, cd=cd, width=9, textspace=1.25)
+                fig = plt.show()
+                st.pyplot(fig)
+            stat_plots(df)
+
+        AgGrid(df)
+
+    with tab13:
+        df = all_df.loc[all_df['Dataset'].isin(datasets)][[method_g + '-' + metric_name for method_g in ['DCN', 'DEC', 'IDEC', 'DEPICT', 'DTC', 'DTCR', 'SDCN', 'SOM_VAE', 'ClusterGAN', 'VADE']]]
+        df = df[df.mean().sort_values().index]
+        fig = go.Figure()
+        for i, cols in enumerate(df.columns[:]):
+            fig.add_trace(go.Box(y=df[cols], name=cols[:-len(metric_name)-1],
+                                            marker=dict(
+                                            opacity=1,
+                                            color='rgb(8,81,156)',
+                                            outliercolor='rgba(219, 64, 82, 0.6)',
+                                            line=dict(
+                                                outliercolor='rgba(219, 64, 82, 0.6)',
+                                                outlierwidth=2)),
+                                        line_color='rgb(8,81,156)'
+                                    ))
+        fig.update_layout(showlegend=False, 
+                              width=1290, 
+                              height=600, 
+                              template="plotly_white", 
+                              font=dict(
+                                        size=39,
+                                        color="black"))
+        fig.update_xaxes(tickfont_size=15, ticks="outside", ticklen=20, tickwidth=2)
+        st.plotly_chart(fig)
+
+        if len(datasets) > 0:
+            def stat_plots(df_toplot):
+                def cd_diagram_process(df, rank_ascending=False):
+                    df = df.rank(ascending=rank_ascending, axis=1)
+                    return df
+                
+                rank_ri_df  = cd_diagram_process(df_toplot)
+                rank_df = rank_ri_df.mean().sort_values()
+
+                names = []
+                for method in rank_df.index.values:
+                    names.append(method[:-len(metric_name)-1])
+
+                avranks =  rank_df.values
+                cd = compute_CD(avranks, 128, "0.1")
+                graph_ranks(avranks, names, cd=cd, width=9, textspace=1.25)
+                fig = plt.show()
+                st.pyplot(fig)
+            stat_plots(df)
+
+        AgGrid(df)
+
         
 def generate_dataframe(df, datasets, methods_family, metric_name):
     df = df.loc[df['Dataset'].isin(datasets)][[method_g + '-' + metric_name for method_g in methods_family]]
+    df = df[df.mean().sort_values().index]
     df.insert(0, 'Datasets', datasets)
     return df
       
@@ -409,7 +742,7 @@ with st.sidebar:
 
 
 df = pd.read_csv('data/results.csv')
-tab_desc, tab_acc, tab_time, tab_stats, tab_misconceptions, tab_dataset, tab_method = st.tabs(["Description", "Evaluation", "Runtime", "Statistical Tests", "Misconceptions", "Datasets", "Methods"])  
+tab_desc, tab_acc, tab_time, tab_stats, tab_analysis, tab_misconceptions, tab_dataset, tab_method = st.tabs(["Description", "Evaluation", "Runtime", "Statistical Tests", "Classwise Analysis", "Misconceptions", "Datasets", "Methods"])  
 
 with tab_desc:
     st.markdown('# TSClustOdyssey')
@@ -433,6 +766,10 @@ with tab_stats:
 with tab_misconceptions:
     st.markdown('# Misconceptions')
     plot_misconceptions_plot(metric_name, datasets)
+
+with tab_analysis:
+    st.markdown('# Classwise Analysis')
+    plot_classwise(df, metric_name, datasets)
 
 with tab_dataset:
     st.markdown('# Dataset Description')
