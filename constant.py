@@ -199,6 +199,14 @@ def get_bubble_data(methods, measure_name):
             y.append(performance_time_methods_dict_ari[m])
         elif measure_name == 'NMI':
             y.append(performance_time_methods_dict_nmi[m])
+    
+    import numpy as np
+    
+    idxs = np.argsort(time)
+    time = np.array(time)[idxs]
+    time_text = np.array(time_text)[idxs]
+    methods = np.array(methods)[idxs]
+    y = np.array(y)[idxs]
 
     return time, time_text, methods, y
 
