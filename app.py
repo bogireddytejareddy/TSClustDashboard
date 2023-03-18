@@ -709,7 +709,7 @@ def generate_dataframe(df, datasets, methods_family, metric_name):
     
 with st.sidebar:
     st.markdown('# TSClustOdyssey') 
-    metric_name = st.selectbox('Pick an assessment metric', list_measures)
+    metric_name = st.selectbox('Pick an assessment measure', list_measures)
 
     container_dataset = st.container()  
     all_cluster = st.checkbox("Select all", key='all_clusters')
