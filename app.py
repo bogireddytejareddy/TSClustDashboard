@@ -769,7 +769,7 @@ with tab_misconceptions:
     plot_misconceptions_plot(metric_name, datasets)
 
 with tab_analysis:
-    st.markdown('# Classwise Analysis')
+    st.markdown('# Comparative Analysis')
     plot_classwise(df, metric_name, datasets)
 
 with tab_dataset:
