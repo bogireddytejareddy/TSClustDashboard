@@ -61,7 +61,7 @@ def plot_time_plot(measure_name):
     container_method = st.container()
     all_time_method = st.checkbox("Select all",key='all_time_method')
     if all_time_method: time_methods_family = container_method.multiselect('Select a group of methods', sorted(time_methods), sorted(time_methods), key='selector_time_methods_all')
-    else: time_methods_family = container_method.multiselect('Select a group of methods', sorted(time_methods), key='selector_time_methods', default=['k-Shape', 'DEC', 'IDEC', 'DTC', 'DTCR', 'SOM-VAE', 'DCN', 'DEPICT', 'SDCN', 'ClusterGAN', 'VADE'])
+    else: time_methods_family = container_method.multiselect('Select a group of methods', sorted(time_methods), key='selector_time_methods', default=['k-Shape', 'DTC', 'DTCR', 'SOM-VAE', 'SDCN', 'ClusterGAN'])
 
 
     if len(time_methods_family) > 0:
