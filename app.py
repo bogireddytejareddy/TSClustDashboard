@@ -326,7 +326,8 @@ def plot_box_plot(df, measure_name, methods_family, datasets, scale='linear'):
 
             if len(methods_family) > 0 and len(datasets) > 0:
                 fig = go.FigureWidget()
-                trace1 = fig.add_scattergl(x=df[option1], y=df[option2], mode='markers', name='(Method1, Method2)',
+                trace1 = fig.add_scattergl(x=df[option1], y=df[option2], mode='markers', name='(Method1, Method2)',  text=datasets,
+                                        textposition="bottom center",
                                         marker = dict(size=10,
                                                     opacity=.7,
                                                     color='red',
