@@ -711,6 +711,7 @@ with st.sidebar:
     st.markdown('# TSClustOdyssey') 
     metric_name = st.selectbox('Pick an assessment measure', list_measures)
 
+    cluster_size, length_size, types = [], [], []
     container_dataset = st.container()  
     all_dataset = st.checkbox("Select all", key='all_dataset')
     if all_dataset: datasets = container_dataset.multiselect('Select datasets', sorted(find_datasets(cluster_size, length_size, types)), sorted(find_datasets(cluster_size, length_size, types)))
