@@ -709,19 +709,7 @@ def generate_dataframe(df, datasets, methods_family, metric_name):
     
 with st.sidebar:
     st.markdown('# TSClustOdyssey') 
-    metric_name = st.selectbox('Pick an assessment measure', list_measures)
-
-    try:
-        container_dataset = st.container()  
-        all_dataset = st.checkbox("Select all", key='all_dataset')
-        if all_dataset: datasets = container_dataset.multiselect('Select datasets', sorted(find_datasets(cluster_size, length_size, types)), sorted(find_datasets(cluster_size, length_size, types)))
-        else: datasets = container_dataset.multiselect('Select datasets', sorted(find_datasets(cluster_size, length_size, types))) 
-    except:
-        cluster_size, length_size, types = [], [], []
-        container_dataset = st.container()  
-        all_dataset = st.checkbox("Select all", key='all_dataset')
-        if all_dataset: datasets = container_dataset.multiselect('Select datasets', sorted(find_datasets(cluster_size, length_size, types)), sorted(find_datasets(cluster_size, length_size, types)))
-        else: datasets = container_dataset.multiselect('Select datasets', sorted(find_datasets(cluster_size, length_size, types))) 
+    metric_name = st.selectbox('Pick an assessment measure', list_measures) 
     
     container_dataset = st.container()  
     all_cluster = st.checkbox("Select all", key='all_clusters')
@@ -737,6 +725,11 @@ with st.sidebar:
     all_type = st.checkbox("Select all", key='all_types')
     if all_type: types = container_dataset.multiselect('Select sequence type', sorted(list(list_type)), sorted(list(list_type)))
     else: types = container_dataset.multiselect('Select sequence type', sorted(list(list_type)))
+   
+    container_dataset = st.container()  
+    all_dataset = st.checkbox("Select all", key='all_dataset')
+    if all_dataset: datasets = container_dataset.multiselect('Select datasets', sorted(find_datasets(cluster_size, length_size, types)), sorted(find_datasets(cluster_size, length_size, types)))
+    else: datasets = container_dataset.multiselect('Select datasets', sorted(find_datasets(cluster_size, length_size, types))) 
     
     container_method = st.container()
     all_class = st.checkbox("Select all",key='all_class')
