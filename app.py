@@ -743,7 +743,7 @@ with st.sidebar:
 
 
 df = pd.read_csv('data/results.csv')
-tab_desc, tab_acc, tab_time, tab_stats, tab_analysis, tab_misconceptions, tab_dataset, tab_method = st.tabs(["Description", "Evaluation", "Runtime", "Statistical Tests", "Classwise Analysis", "Misconceptions", "Datasets", "Methods"])  
+tab_desc, tab_acc, tab_time, tab_stats, tab_analysis, tab_misconceptions, tab_dataset, tab_method = st.tabs(["Description", "Evaluation", "Runtime", "Statistical Tests", "Comparative Analysis", "Misconceptions", "Datasets", "Methods"])  
 
 with tab_desc:
     st.markdown('# TSClustOdyssey')
