@@ -32,7 +32,7 @@ method_class_dict = {'Partitional': ['k-AVG', 'k-DBA', 'k-SC', 'k-Shape', 'PAM-E
                      'Shapelet': ['UShapelets-50'],
                      'Distribution': ['GMM', 'AP-ED', 'AP-MSM', 'AP-SBD'],
                      'Model-and-Feature': ['AR-COEFF', 'AR-PVAL', 'CATCH22', 'ES-COEFF', 'LPCC'],
-                     'Deep-Learning': ['DCN', 'DEC', 'IDEC', 'DEPICT', 'DTC', 'DTCR', 'RES_CNN+CNRV+IDEC', 'RES_CNN+CNRV+NONE', 'SDCN', 'SOM_VAE', 'ClusterGAN', 'VADE']
+                     'Deep-Learning': ['DCN', 'DEC', 'IDEC', 'DEPICT', 'DTC', 'DTCR', 'SDCN', 'SOM_VAE', 'ClusterGAN', 'VADE']
                      }
 
 classes = ['Partitional', 'Kernel', 'Density', 'Hierarchical', 'Semi-Supervised', 'Shapelet', 'Distribution', 'Model-and-Feature', 'Deep-Learning']
@@ -43,11 +43,11 @@ methods = ['k-AVG', 'k-DBA', 'k-SC', 'k-Shape', 'KKM_GAK', 'KKM_KDTW', 'KKM_RBF'
            'AGG-A-ED', 'AGG-A-MSM', 'AGG-A-SBD', 'AGG-C-ED', 'AGG-C-MSM', 'AGG-C-SBD', 'AGG-S-ED', 'AGG-S-MSM', 'AGG-S-SBD', 'BIRCH',
            'SS-DTW', 'FeatTS', 'UShapelets-50', 'GMM', 'AP-ED', 'AP-MSM', 'AP-SBD',
            'AR-COEFF', 'AR-PVAL', 'CATCH22', 'ES-COEFF', 'LPCC',
-           'DCN', 'DEC', 'IDEC', 'DEPICT', 'DTC', 'DTCR', 'RES_CNN+CNRV+IDEC', 'RES_CNN+CNRV+NONE', 'SDCN', 'SOM_VAE', 'ClusterGAN', 'VADE']
+           'DCN', 'DEC', 'IDEC', 'DEPICT', 'DTC', 'DTCR', 'SDCN', 'SOM_VAE', 'ClusterGAN', 'VADE']
 
 time_methods = ['k-AVG', 'k-DBA', 'k-SC', 'k-Shape', 'KKM_SINK', 'SC_SINK', 'BIRCH','AP_MSM', 'AGG-C_MSM', 
 'DBSCAN_MSM', 'OPTICS_MSM','DensityPeaks_MSM', 'UShapelet_50%', 'FeatTS', 'SS-DTW', 'GMM', 'AR-COEFF', 'DEC', 'IDEC','DTC', 'DTCR', 'SOM-VAE', 
-'DCN', 'DEPICT', 'SDCN', 'ClusterGAN', 'VADE', 'RES_CNN+CNRV+IDEC', 'RES_CNN+CNRV+NONE']
+'DCN', 'DEPICT', 'SDCN', 'ClusterGAN', 'VADE']
 
 time_methods_dict = {'k-AVG': 4963.54138, 
            'k-Shape': 25509.62824, 
