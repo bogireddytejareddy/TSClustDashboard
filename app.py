@@ -233,7 +233,7 @@ def plot_misconceptions_plot(metric_name, datasets):
                 stat_plots(df)
     
     with tab6:
-        dl_list = ['DCN', 'DEC', 'IDEC', 'DEPICT', 'DTC', 'DTCR', 'RES_CNN+CNRV+NONE', 'SDCN', 'SOM_VAE', 'ClusterGAN', 'VADE']
+        dl_list = ['DCN', 'DEC', 'IDEC', 'DEPICT', 'DTC', 'DTCR', 'SDCN', 'SOM_VAE', 'ClusterGAN', 'VADE']
         clsc_list = ['k-AVG', 'k-DBA', 'k-SC', 'k-Shape', 'KKM_GAK', 'KKM_KDTW', 'KKM_RBF', 'KKM_SINK', 'SC_GAK', 'SC_KDTW', 'SC_RBF', 'SC_SINK', 
            'DBSCAN-ED', 'DBSCAN-MSM', 'DBSCAN-SBD', 'DP-ED', 'DP-MSM', 'DP-SBD', 'OPTICS-ED', 'OPTICS-MSM', 'OPTICS-SBD', 
            'PAM-ED', 'PAM-SBD', 'PAM-MSM', 'PAM-LCSS', 'PAM-TWED', 'PAM-SWALE', 'PAM-DTW', 'PAM-EDR', 'PAM-ERP',
