@@ -708,7 +708,7 @@ def generate_dataframe(df, datasets, methods_family, metric_name):
       
     
 with st.sidebar:
-    st.markdown('# TSClustOdyssey') 
+    st.markdown('# OdysseyEngine') 
     metric_name = st.selectbox('Pick an assessment measure', list_measures) 
     
     container_dataset = st.container()  
@@ -746,7 +746,7 @@ df = pd.read_csv('data/results.csv')
 tab_desc, tab_acc, tab_time, tab_stats, tab_analysis, tab_misconceptions, tab_dataset, tab_method = st.tabs(["Description", "Evaluation", "Runtime", "Statistical Tests", "Comparative Analysis", "Misconceptions", "Datasets", "Methods"])  
 
 with tab_desc:
-    st.markdown('# TSClustOdyssey')
+    st.markdown('# OdysseyEngine')
     st.markdown(description_intro)
 
 with tab_acc:
