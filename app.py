@@ -83,7 +83,7 @@ def plot_time_plot(measure_name):
             )
         )])
         fig.update_layout(showlegend=False, width=800, height=600, template="plotly_white", font=dict(
-                                                        size=19,
+                                                        size=25,
                                                         color="black"))
 
         st.plotly_chart(fig)
