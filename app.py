@@ -82,8 +82,10 @@ def plot_time_plot(measure_name):
                 sizemin=4
             )
         )])
+        fig.update_xaxes(tickfont_size=20)
+        fig.update_yaxes(tickfont_size=20)
         fig.update_layout(showlegend=False, width=800, height=600, template="plotly_white", font=dict(
-                                                        size=25,
+                                                        size=19,
                                                         color="black"))
 
         st.plotly_chart(fig)
