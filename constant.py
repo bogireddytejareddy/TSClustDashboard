@@ -280,7 +280,7 @@ classes from the data mining, machine learning, and deep learning literature.
 
 ## Datasets
 
-To ease reproducibility, we share our results over an established benchmarks:
+To ease reproducibility, we share our results over an established benchmark:
 
 * The UCR Univariate Archive, which contains 128 univariate time-series datasets.
     * Download all 128 preprocessed datasets [here](https://www.thedatum.org/datasets/UCR2022_DATASETS.zip).
@@ -289,14 +289,14 @@ For the preprocessing steps check [here](https://github.com/thedatumorg/UCRArchi
 
 ## Models
 
-We complied a Python [library](https://github.com/johnpaparrizos/TSClusteringEval) with state-of-the-art time-series clustering models 
-so that all the comparisons are performed under the same framework for a consistent evaluation in terms of both performance and efficiency.
+We compiled a Python library with state-of-the-art time-series clustering models so that all the comparisons are performed under the 
+same framework for a consistent evaluation in terms of both performance and efficiency.
 
 """
 
 
 text_description_dataset = f"""
-We conduct our evaluation using the UCR Time-Series Archive, the largest collection of class labeled time series datasets. 
+We conduct our evaluation using the UCR Time-Series Archive, the largest collection of class-labeled time series datasets. 
 The archive consists of a collection of 128 datasets sourced from different sensor readings while performing diverse tasks from multiple 
 domains. All datasets in the archive span between 40 to 24000 time-series and have lengths varying from 15 to 2844. Datasets are z-normalized, 
 and each time-series in the dataset belongs to only one class. There is a small subset of datasets in the archive containing missing values and 
