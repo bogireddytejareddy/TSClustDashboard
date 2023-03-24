@@ -53,7 +53,7 @@ def plot_stat_plot(df, metric_name, methods_family, datasets):
                 graph_ranks(avranks, names, cd=cd, width=9, textspace=1.25)
                 fig = plt.show()
                 st.pyplot(fig)
-                st.table(rank_df.reset_index())
+                st.table(rank_df.reset_index(drop=True, inplace=True))
 
             stat_plots(df)
     
