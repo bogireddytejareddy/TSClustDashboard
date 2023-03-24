@@ -82,8 +82,8 @@ def plot_time_plot(measure_name):
                 sizemin=4
             )
         )])
-        fig.update_xaxes(tickfont_size=20)
-        fig.update_yaxes(tickfont_size=20)
+        fig.update_xaxes(tickfont_size=18)
+        fig.update_yaxes(tickfont_size=18)
         fig.update_layout(showlegend=False, width=800, height=600, template="plotly_white", font=dict(
                                                         size=19,
                                                         color="black"))
@@ -306,9 +306,9 @@ def plot_box_plot(df, measure_name, methods_family, datasets, scale='linear'):
                                         size=39,
                                         color="black"))
             
-            fig.update_xaxes(tickfont_size=20)
-            fig.update_yaxes(tickfont_size=20)
-            fig.update_xaxes(tickfont_size=15, ticks="outside", ticklen=20, tickwidth=2)
+            fig.update_xaxes(tickfont_size=18)
+            fig.update_yaxes(tickfont_size=18)
+            #fig.update_xaxes(tickfont_size=15, ticks="outside", ticklen=20, tickwidth=2)
             st.plotly_chart(fig)
 
             cols_list = []
@@ -370,8 +370,8 @@ def plot_box_plot(df, measure_name, methods_family, datasets, scale='linear'):
                         trace3.y = df[option2][inds]
                     
                 fig.layout.on_change(do_zoom, 'xaxis.range', 'yaxis.range')
-                fig.update_xaxes(tickfont_size=20)
-                fig.update_yaxes(tickfont_size=20)
+                fig.update_xaxes(tickfont_size=18)
+                fig.update_yaxes(tickfont_size=18)
                 st.plotly_chart(fig)
 
 
@@ -399,8 +399,8 @@ def plot_classwise(all_df, metric_name, datasets):
                               font=dict(
                                         size=39,
                                         color="black"))
-        fig.update_xaxes(tickfont_size=20)
-        fig.update_yaxes(tickfont_size=20)
+        fig.update_xaxes(tickfont_size=18)
+        fig.update_yaxes(tickfont_size=18)
         #fig.update_xaxes(tickfont_size=15, ticks="outside", ticklen=20, tickwidth=2)
         st.plotly_chart(fig)
 
@@ -448,8 +448,8 @@ def plot_classwise(all_df, metric_name, datasets):
                               font=dict(
                                         size=39,
                                         color="black"))
-        fig.update_xaxes(tickfont_size=20)
-        fig.update_yaxes(tickfont_size=20)
+        fig.update_xaxes(tickfont_size=18)
+        fig.update_yaxes(tickfont_size=18)
         #fig.update_xaxes(tickfont_size=15, ticks="outside", ticklen=20, tickwidth=2)
         st.plotly_chart(fig)
 
@@ -497,8 +497,8 @@ def plot_classwise(all_df, metric_name, datasets):
                               font=dict(
                                         size=39,
                                         color="black"))
-        fig.update_xaxes(tickfont_size=20)
-        fig.update_yaxes(tickfont_size=20)
+        fig.update_xaxes(tickfont_size=18)
+        fig.update_yaxes(tickfont_size=18)
         #fig.update_xaxes(tickfont_size=15, ticks="outside", ticklen=20, tickwidth=2)
         st.plotly_chart(fig)
 
@@ -546,8 +546,8 @@ def plot_classwise(all_df, metric_name, datasets):
                               font=dict(
                                         size=39,
                                         color="black"))
-        fig.update_xaxes(tickfont_size=20)
-        fig.update_yaxes(tickfont_size=20)
+        fig.update_xaxes(tickfont_size=18)
+        fig.update_yaxes(tickfont_size=18)
         #fig.update_xaxes(tickfont_size=15, ticks="outside", ticklen=20, tickwidth=2)
         st.plotly_chart(fig)
 
@@ -595,8 +595,8 @@ def plot_classwise(all_df, metric_name, datasets):
                               font=dict(
                                         size=39,
                                         color="black"))
-        fig.update_xaxes(tickfont_size=20)
-        fig.update_yaxes(tickfont_size=20)
+        fig.update_xaxes(tickfont_size=18)
+        fig.update_yaxes(tickfont_size=18)
         #fig.update_xaxes(tickfont_size=15, ticks="outside", ticklen=20, tickwidth=2)
         st.plotly_chart(fig)
 
@@ -644,8 +644,8 @@ def plot_classwise(all_df, metric_name, datasets):
                               font=dict(
                                         size=39,
                                         color="black"))
-        fig.update_xaxes(tickfont_size=20)
-        fig.update_yaxes(tickfont_size=20)
+        fig.update_xaxes(tickfont_size=18)
+        fig.update_yaxes(tickfont_size=18)
         #fig.update_xaxes(tickfont_size=15, ticks="outside", ticklen=20, tickwidth=2)
         st.plotly_chart(fig)
 
@@ -693,8 +693,8 @@ def plot_classwise(all_df, metric_name, datasets):
                               font=dict(
                                         size=39,
                                         color="black"))
-        fig.update_xaxes(tickfont_size=20)
-        fig.update_yaxes(tickfont_size=20)
+        fig.update_xaxes(tickfont_size=18)
+        fig.update_yaxes(tickfont_size=18)
         #fig.update_xaxes(tickfont_size=15, ticks="outside", ticklen=20, tickwidth=2)
         st.plotly_chart(fig)
 
