@@ -305,6 +305,9 @@ def plot_box_plot(df, measure_name, methods_family, datasets, scale='linear'):
                               font=dict(
                                         size=39,
                                         color="black"))
+            
+            fig.update_xaxes(tickfont_size=20)
+            fig.update_yaxes(tickfont_size=20)
             fig.update_xaxes(tickfont_size=15, ticks="outside", ticklen=20, tickwidth=2)
             st.plotly_chart(fig)
 
@@ -367,6 +370,8 @@ def plot_box_plot(df, measure_name, methods_family, datasets, scale='linear'):
                         trace3.y = df[option2][inds]
                     
                 fig.layout.on_change(do_zoom, 'xaxis.range', 'yaxis.range')
+                fig.update_xaxes(tickfont_size=20)
+                fig.update_yaxes(tickfont_size=20)
                 st.plotly_chart(fig)
 
 
@@ -394,7 +399,9 @@ def plot_classwise(all_df, metric_name, datasets):
                               font=dict(
                                         size=39,
                                         color="black"))
-        fig.update_xaxes(tickfont_size=15, ticks="outside", ticklen=20, tickwidth=2)
+        fig.update_xaxes(tickfont_size=20)
+        fig.update_yaxes(tickfont_size=20)
+        #fig.update_xaxes(tickfont_size=15, ticks="outside", ticklen=20, tickwidth=2)
         st.plotly_chart(fig)
 
         if len(datasets) > 0:
@@ -441,7 +448,9 @@ def plot_classwise(all_df, metric_name, datasets):
                               font=dict(
                                         size=39,
                                         color="black"))
-        fig.update_xaxes(tickfont_size=15, ticks="outside", ticklen=20, tickwidth=2)
+        fig.update_xaxes(tickfont_size=20)
+        fig.update_yaxes(tickfont_size=20)
+        #fig.update_xaxes(tickfont_size=15, ticks="outside", ticklen=20, tickwidth=2)
         st.plotly_chart(fig)
 
         if len(datasets) > 0:
@@ -488,7 +497,9 @@ def plot_classwise(all_df, metric_name, datasets):
                               font=dict(
                                         size=39,
                                         color="black"))
-        fig.update_xaxes(tickfont_size=15, ticks="outside", ticklen=20, tickwidth=2)
+        fig.update_xaxes(tickfont_size=20)
+        fig.update_yaxes(tickfont_size=20)
+        #fig.update_xaxes(tickfont_size=15, ticks="outside", ticklen=20, tickwidth=2)
         st.plotly_chart(fig)
 
         if len(datasets) > 0:
@@ -535,7 +546,9 @@ def plot_classwise(all_df, metric_name, datasets):
                               font=dict(
                                         size=39,
                                         color="black"))
-        fig.update_xaxes(tickfont_size=15, ticks="outside", ticklen=20, tickwidth=2)
+        fig.update_xaxes(tickfont_size=20)
+        fig.update_yaxes(tickfont_size=20)
+        #fig.update_xaxes(tickfont_size=15, ticks="outside", ticklen=20, tickwidth=2)
         st.plotly_chart(fig)
 
         if len(datasets) > 0:
@@ -582,7 +595,9 @@ def plot_classwise(all_df, metric_name, datasets):
                               font=dict(
                                         size=39,
                                         color="black"))
-        fig.update_xaxes(tickfont_size=15, ticks="outside", ticklen=20, tickwidth=2)
+        fig.update_xaxes(tickfont_size=20)
+        fig.update_yaxes(tickfont_size=20)
+        #fig.update_xaxes(tickfont_size=15, ticks="outside", ticklen=20, tickwidth=2)
         st.plotly_chart(fig)
 
         if len(datasets) > 0:
@@ -629,7 +644,9 @@ def plot_classwise(all_df, metric_name, datasets):
                               font=dict(
                                         size=39,
                                         color="black"))
-        fig.update_xaxes(tickfont_size=15, ticks="outside", ticklen=20, tickwidth=2)
+        fig.update_xaxes(tickfont_size=20)
+        fig.update_yaxes(tickfont_size=20)
+        #fig.update_xaxes(tickfont_size=15, ticks="outside", ticklen=20, tickwidth=2)
         st.plotly_chart(fig)
 
         if len(datasets) > 0:
@@ -676,7 +693,9 @@ def plot_classwise(all_df, metric_name, datasets):
                               font=dict(
                                         size=39,
                                         color="black"))
-        fig.update_xaxes(tickfont_size=15, ticks="outside", ticklen=20, tickwidth=2)
+        fig.update_xaxes(tickfont_size=20)
+        fig.update_yaxes(tickfont_size=20)
+        #fig.update_xaxes(tickfont_size=15, ticks="outside", ticklen=20, tickwidth=2)
         st.plotly_chart(fig)
 
         if len(datasets) > 0:
