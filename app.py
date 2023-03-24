@@ -129,7 +129,6 @@ def plot_misconceptions_plot(metric_name, datasets):
                     fig = plt.show()
                     st.pyplot(fig)
                 
-
                 stat_plots(df)
                 
 
