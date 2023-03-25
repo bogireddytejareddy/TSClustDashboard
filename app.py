@@ -726,7 +726,7 @@ def plot_classwise(all_df, metric_name, datasets):
 
 
 def plot_ablation(df, metric_name, datasets):
-    tab14, tab15 = st.tabs(["Architectural Choices", "Loss Choices"])
+    tab14, tab15, tab16 = st.tabs(["Architectures", "Pretext Losses", "Clustering Loss"])
     with tab14:
         arch_list = ['BI_LSTM', 'BI_GRU', 'RES_CNN', 'D_RNN', 'BI_RNN', 'D_CNN', 'MLP', 'S_CNN', 'BI_RNN+ATTN']
         container_method = st.container()
@@ -829,7 +829,8 @@ def plot_ablation(df, metric_name, datasets):
                     st.pyplot(fig)
 
                 stat_plots(df)
-
+    with tab16:
+        pass
 
 
 def generate_dataframe(df, datasets, methods_family, metric_name):
@@ -875,7 +876,7 @@ with st.sidebar:
 
 
 df = pd.read_csv('data/results.csv')
-tab_desc, tab_acc, tab_time, tab_stats, tab_analysis, tab_misconceptions, tab_ablation, tab_dataset, tab_method = st.tabs(["Description", "Evaluation", "Runtime", "Statistical Tests", "Comparative Analysis", "Misconceptions", "Ablation Analysis", "Datasets", "Methods"])  
+tab_desc, tab_acc, tab_time, tab_stats, tab_analysis, tab_misconceptions, tab_ablation, tab_dataset, tab_method = st.tabs(["Description", "Evaluation", "Runtime", "Statistical Tests", "Comparative Analysis", "Misconceptions", "DNN Ablation Analysis", "Datasets", "Methods"])  
 
 with tab_desc:
     st.markdown('# OdysseyEngine')
@@ -905,7 +906,7 @@ with tab_analysis:
     plot_classwise(df, metric_name, datasets)
 
 with tab_ablation:
-    st.markdown('# Ablation Analysis')
+    st.markdown('# DNN Ablation Analysis')
     plot_ablation(df, metric_name, datasets)
 
 with tab_dataset:
