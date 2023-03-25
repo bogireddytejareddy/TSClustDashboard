@@ -726,7 +726,7 @@ def plot_classwise(all_df, metric_name, datasets):
 
 
 def plot_ablation(df, metric_name, datasets):
-    tab14, tab15, tab16 = st.tabs(["Architectures", "Pretext Losses", "Clustering Losses"])
+    tab14, tab15, tab16 = st.tabs(["Architectures", "Pretext Loss", "Clustering Loss"])
     with tab14:
         arch_list = ['BI_LSTM', 'BI_GRU', 'RES_CNN', 'D_RNN', 'BI_RNN', 'D_CNN', 'MLP', 'S_CNN', 'BI_RNN+ATTN']
         container_method = st.container()
