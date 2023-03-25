@@ -724,7 +724,114 @@ def plot_classwise(all_df, metric_name, datasets):
 
         AgGrid(df)
 
-        
+
+def plot_ablation(df, metric_name, datasets):
+    tab14, tab15 = st.tabs(["Architectural Choices", "Loss Choices"])
+    with tab14:
+        arch_list = ['BI_LSTM', 'BI_GRU', 'RES_CNN', 'D_RNN', 'BI_RNN', 'D_CNN', 'MLP', 'S_CNN', 'BI_RNN+ATTN']
+        container_method = st.container()
+        all_archs = st.checkbox("Select all", key='all_archs_measures')
+        if all_archs: all_archs_family = container_method.multiselect('Select architectures', sorted(arch_list), sorted(arch_list), key='selector_all_archs')
+        else: all_archs_family = container_method.multiselect('Select architectures', sorted(arch_list), key='selector_archs', default=arch_list)
+
+        df = pd.read_csv('data/ablation.csv')
+        df = df.loc[df['Name'].isin(datasets)][[method_g + '-' + metric_name for method_g in all_archs_family]]
+        df.insert(0, 'Datasets', datasets)
+
+        if len(datasets) > 0:
+            if len(all_archs_family) > 1 and len(all_archs_family) < 14:
+                def stat_plots(df_toplot):
+                    def cd_diagram_process(df, rank_ascending=False):
+                        df = df.rank(ascending=rank_ascending, axis=1)
+                        return df
+
+                    df_toplot.drop(columns=df_toplot.columns[0], axis=1, inplace=True)
+
+                    rank_ri_df  = cd_diagram_process(df_toplot)
+                    rank_df = rank_ri_df.mean().sort_values()
+
+                    names = []
+                    for method in rank_df.index.values:
+                        names.append(method[:-len(metric_name)-1] + '+NONE+REC')
+
+                    avranks =  rank_df.values
+                    cd = compute_CD(avranks, 128, "0.1")
+                    graph_ranks(avranks, names, cd=cd, width=9, textspace=1.25)
+                    fig = plt.show()
+                    st.pyplot(fig)
+
+                stat_plots(df)
+    with tab15:
+        arch_list1 = ['NONE_TRPLT', 'NONE_MREC', 'NONE_VAE', 'NONE_REC', 'NONE_CNRV']
+        container_method = st.container()
+        all_loss1 = st.checkbox("Select all", key='all_loss1_measures')
+        if all_loss1: all_loss1_family = container_method.multiselect('Select pretext losses', sorted(arch_list1), sorted(arch_list1), key='selector_all_loss1')
+        else: all_loss1_family = container_method.multiselect('Select pretext losses', sorted(arch_list1), key='selector_loss1', default=arch_list1)
+
+        df = pd.read_csv('data/ablation.csv')
+        df = df.loc[df['Name'].isin(datasets)][[method_g + '-' + metric_name for method_g in all_loss1_family]]
+        df.insert(0, 'Datasets', datasets)
+
+        if len(datasets) > 0:
+            if len(all_loss1_family) > 1 and len(all_loss1_family) < 14:
+                def stat_plots(df_toplot):
+                    def cd_diagram_process(df, rank_ascending=False):
+                        df = df.rank(ascending=rank_ascending, axis=1)
+                        return df
+                    
+                    df_toplot.drop(columns=df_toplot.columns[0], axis=1, inplace=True)
+
+                    rank_ri_df  = cd_diagram_process(df_toplot)
+                    rank_df = rank_ri_df.mean().sort_values()
+
+                    names = []
+                    for method in rank_df.index.values:
+                        names.append('RES-CNN+' + method[:-len(metric_name)-1].replace('_', '+'))
+
+                    avranks =  rank_df.values
+                    cd = compute_CD(avranks, 128, "0.1")
+                    graph_ranks(avranks, names, cd=cd, width=9, textspace=1.25)
+                    fig = plt.show()
+                    st.pyplot(fig)
+
+                stat_plots(df)
+
+        arch_list2 = ['IDEC_TRPLT',  'IDEC_REC', 'IDEC_MREC', 'IDEC_VAE', 'IDEC_CNRV']
+        container_method = st.container()
+        all_loss2 = st.checkbox("Select all", key='all_loss2_measures')
+        if all_loss2: all_loss2_family = container_method.multiselect('Select pretext losses', sorted(arch_list2), sorted(arch_list2), key='selector_all_loss2')
+        else: all_loss2_family = container_method.multiselect('Select pretext losses', sorted(arch_list2), key='selector_loss2', default=arch_list2)
+
+        df = pd.read_csv('data/ablation.csv')
+        df = df.loc[df['Name'].isin(datasets)][[method_g + '-' + metric_name for method_g in all_loss2_family]]
+        df.insert(0, 'Datasets', datasets)
+
+        if len(datasets) > 0:
+            if len(all_loss2_family) > 1 and len(all_loss2_family) < 14:
+                def stat_plots(df_toplot):
+                    def cd_diagram_process(df, rank_ascending=False):
+                        df = df.rank(ascending=rank_ascending, axis=1)
+                        return df
+                    
+                    df_toplot.drop(columns=df_toplot.columns[0], axis=1, inplace=True)
+
+                    rank_ri_df  = cd_diagram_process(df_toplot)
+                    rank_df = rank_ri_df.mean().sort_values()
+
+                    names = []
+                    for method in rank_df.index.values:
+                        names.append('RES-CNN+' + method[:-len(metric_name)-1].replace('_', '+'))
+
+                    avranks =  rank_df.values
+                    cd = compute_CD(avranks, 128, "0.1")
+                    graph_ranks(avranks, names, cd=cd, width=9, textspace=1.25)
+                    fig = plt.show()
+                    st.pyplot(fig)
+
+                stat_plots(df)
+
+
+
 def generate_dataframe(df, datasets, methods_family, metric_name):
     df = df.loc[df['Dataset'].isin(datasets)][[method_g + '-' + metric_name for method_g in methods_family]]
     df = df[df.mean().sort_values().index]
@@ -768,7 +875,7 @@ with st.sidebar:
 
 
 df = pd.read_csv('data/results.csv')
-tab_desc, tab_acc, tab_time, tab_stats, tab_analysis, tab_misconceptions, tab_dataset, tab_method = st.tabs(["Description", "Evaluation", "Runtime", "Statistical Tests", "Comparative Analysis", "Misconceptions", "Datasets", "Methods"])  
+tab_desc, tab_acc, tab_time, tab_stats, tab_analysis, tab_misconceptions, tab_ablation, tab_dataset, tab_method = st.tabs(["Description", "Evaluation", "Runtime", "Statistical Tests", "Comparative Analysis", "Misconceptions", "Ablation Analysis", "Datasets", "Methods"])  
 
 with tab_desc:
     st.markdown('# OdysseyEngine')
@@ -796,6 +903,10 @@ with tab_misconceptions:
 with tab_analysis:
     st.markdown('# Comparative Analysis')
     plot_classwise(df, metric_name, datasets)
+
+with tab_ablation:
+    st.markdown('# Ablation Analysis')
+    plot_ablation(df, metric_name, datasets)
 
 with tab_dataset:
     st.markdown('# Dataset Description')
