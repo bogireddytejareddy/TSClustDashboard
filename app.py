@@ -829,8 +829,6 @@ def plot_ablation(df, metric_name, datasets):
                     st.pyplot(fig)
 
                 stat_plots(df)
-    with tab16:
-        pass
 
 
 def generate_dataframe(df, datasets, methods_family, metric_name):
