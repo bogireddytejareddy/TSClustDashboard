@@ -426,5 +426,12 @@ list_references = f"""
 <br>
 (3) Paparrizos, John, and Luis Gravano. "k-shape: Efficient and accurate clustering of time series." In Proceedings of the 2015 ACM SIGMOD international conference on management of data, pp. 1855-1870. 2015.
 <br>
+(4) Petitjean, François, Alain Ketterlin, and Pierre Gançarski. "A global averaging method for dynamic time warping, with applications to clustering." Pattern recognition 44, no. 3 (2011): 678-693.
+<br>
+(5) Yang, Jaewon, and Jure Leskovec. "Patterns of temporal variation in online media." In Proceedings of the fourth ACM international conference on Web search and data mining, pp. 177-186. 2011.
+<br>
+(6) Dhillon, Inderjit S., Yuqiang Guan, and Brian Kulis. "Kernel k-means: spectral clustering and normalized cuts." In Proceedings of the tenth ACM SIGKDD international conference on Knowledge discovery and data mining, pp. 551-556. 2004.
+<br>
+(7) Ng, Andrew, Michael Jordan, and Yair Weiss. "On spectral clustering: Analysis and an algorithm." Advances in neural information processing systems 14 (2001).
 """
 
