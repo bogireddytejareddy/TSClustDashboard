@@ -419,4 +419,9 @@ lists the methods considered:
 
 """
 
+list_references = f"""
+(1) MacQueen, J. "Some methods for classiﬁcation and analysis of multivariate observations." In Proc. 5th Berkeley Symposium on Math., Stat., and Prob, p. 281. 1965.
+(2) Kaufman, Leonard, and Peter J. Rousseeuw. Finding groups in data: an introduction to cluster analysis. John Wiley & Sons, 2009.
+(3) Paparrizos, John, and Luis Gravano. "k-shape: Efficient and accurate clustering of time series." In Proceedings of the 2015 ACM SIGMOD international conference on management of data, pp. 1855-1870. 2015.
+"""
 
