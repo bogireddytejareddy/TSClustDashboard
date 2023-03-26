@@ -433,5 +433,36 @@ list_references = f"""
 (6) Dhillon, Inderjit S., Yuqiang Guan, and Brian Kulis. "Kernel k-means: spectral clustering and normalized cuts." In Proceedings of the tenth ACM SIGKDD international conference on Knowledge discovery and data mining, pp. 551-556. 2004.
 <br>
 (7) Ng, Andrew, Michael Jordan, and Yair Weiss. "On spectral clustering: Analysis and an algorithm." Advances in neural information processing systems 14 (2001).
+<br>
+(8) Ester, Martin, Hans-Peter Kriegel, Jörg Sander, and Xiaowei Xu. "A density-based algorithm for discovering clusters in large spatial databases with noise." In kdd, vol. 96, no. 34, pp. 226-231. 1996.
+<br>
+(9) Ankerst, Mihael, Markus M. Breunig, Hans-Peter Kriegel, and Jörg Sander. "OPTICS: Ordering points to identify the clustering structure." ACM Sigmod record 28, no. 2 (1999): 49-60.
+<br>
+(10) Rodriguez, Alex, and Alessandro Laio. "Clustering by fast search and find of density peaks." science 344, no. 6191 (2014): 1492-1496.
+<br>
+(11) Kaufman, Leonard, and Peter J. Rousseeuw. Finding groups in data: an introduction to cluster analysis. John Wiley & Sons, 2009.
+<br>
+(12) Zhang, Tian, Raghu Ramakrishnan, and Miron Livny. "BIRCH: an efficient data clustering method for very large databases." ACM sigmod record 25, no. 2 (1996): 103-114.
+<br>
+(13) Frey, Brendan J., and Delbert Dueck. "Clustering by passing messages between data points." science 315, no. 5814 (2007): 972-976.
+<br>
+(14) Dempster, Arthur P., Nan M. Laird, and Donald B. Rubin. "Maximum likelihood from incomplete data via the EM algorithm." Journal of the royal statistical society: series B (methodological) 39, no. 1 (1977): 1-22.
+<br>
+(15) Zakaria, Jesin, Abdullah Mueen, and Eamonn Keogh. "Clustering time series using unsupervised-shapelets." In 2012 IEEE 12th International Conference on Data Mining, pp. 785-794. IEEE, 2012.
+<br>
+(16) Lods, Arnaud, Simon Malinowski, Romain Tavenard, and Laurent Amsaleg. "Learning DTW-preserving shapelets." In Advances in Intelligent Data Analysis XVI: 16th International Symposium, IDA 2017, London, UK, October 26–28, 2017, Proceedings 16, pp. 198-209. springer International Publishing, 2017.
+<br>
+(17) Zhang, Qin, Jia Wu, Hong Yang, Yingjie Tian, and Chengqi Zhang. "Unsupervised feature learning from time series." In IJCAI, pp. 2322-2328. 2016.
+<br>
+(18) Tiano, Donato, Angela Bonifati, and Raymond Ng. "FeatTS: Feature-based Time Series Clustering." In Proceedings of the 2021 International Conference on Management of Data, pp. 2784-2788. 2021.
+<br>
+(19) Dau, Hoang Anh, Nurjahan Begum, and Eamonn Keogh. "Semi-supervision dramatically improves time series clustering under dynamic time warping." In Proceedings of the 25th ACM International on Conference on Information and Knowledge Management, pp. 999-1008. 2016.
+<br>
+(20) Piccolo, Domenico. "A distance measure for classifying ARIMA models." Journal of time series analysis 11, no. 2 (1990): 153-164.
+<br>
+(21) Kalpakis, Konstantinos, Dhiral Gada, and Vasundhara Puttagunta. "Distance measures for effective clustering of ARIMA time-series." In Proceedings 2001 IEEE international conference on data mining, pp. 273-280. IEEE, 2001.
+<br>
+(22) Maharaj, Elizabeth Ann. "Cluster of Time Series." Journal of Classification 17, no. 2 (2000).
+<br>
 """
 
