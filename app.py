@@ -918,4 +918,4 @@ with tab_method:
 
 with tab_reference:
     st.markdown('# References')
-    
+    st.markdown(list_references, unsafe_allow_html=True)
