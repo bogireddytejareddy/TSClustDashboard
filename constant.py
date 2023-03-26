@@ -464,5 +464,28 @@ list_references = f"""
 <br>
 (22) Maharaj, Elizabeth Ann. "Cluster of Time Series." Journal of Classification 17, no. 2 (2000).
 <br>
+(23) Lubba, Carl H., Sarab S. Sethi, Philip Knaute, Simon R. Schultz, Ben D. Fulcher, and Nick S. Jones. "catch22: CAnonical Time-series CHaracteristics: Selected through highly comparative time-series analysis." Data Mining and Knowledge Discovery 33, no. 6 (2019): 1821-1852.
+<br>
+(24) Fulcher, Ben D., and Nick S. Jones. "hctsa: A computational framework for automated time-series phenotyping using massive feature extraction." Cell systems 5, no. 5 (2017): 527-531.
+<br>
+(25) Yang, Bo, Xiao Fu, Nicholas D. Sidiropoulos, and Mingyi Hong. "Towards k-means-friendly spaces: Simultaneous deep learning and clustering." In international conference on machine learning, pp. 3861-3870. PMLR, 2017.
+<br>
+(26) Xie, Junyuan, Ross Girshick, and Ali Farhadi. "Unsupervised deep embedding for clustering analysis." In International conference on machine learning, pp. 478-487. PMLR, 2016.
+<br>
+(27) Guo, Xifeng, Long Gao, Xinwang Liu, and Jianping Yin. "Improved deep embedded clustering with local structure preservation." In Ijcai, pp. 1753-1759. 2017.
+<br>
+(28) Ma, Qianli, Jiawei Zheng, Sen Li, and Gary W. Cottrell. "Learning representations for time series clustering." Advances in neural information processing systems 32 (2019).
+<br>
+(29) Madiraju, Naveen Sai. "Deep temporal clustering: Fully unsupervised learning of time-domain features." PhD diss., Arizona State University, 2018.
+<br>
+(30) Fortuin, Vincent, Matthias Hüser, Francesco Locatello, Heiko Strathmann, and Gunnar Rätsch. "Som-vae: Interpretable discrete representation learning on time series." arXiv preprint arXiv:1806.02199 (2018).
+<br>
+(31) Ghasedi Dizaji, Kamran, Amirhossein Herandi, Cheng Deng, Weidong Cai, and Heng Huang. "Deep clustering via joint convolutional autoencoder embedding and relative entropy minimization." In Proceedings of the IEEE international conference on computer vision, pp. 5736-5745. 2017.
+<br>
+(32) Bo, Deyu, Xiao Wang, Chuan Shi, Meiqi Zhu, Emiao Lu, and Peng Cui. "Structural deep clustering network." In Proceedings of the web conference 2020, pp. 1400-1410. 2020.
+<br>
+(33) Jiang, Zhuxi, Yin Zheng, Huachun Tan, Bangsheng Tang, and Hanning Zhou. "Variational deep embedding: A generative approach to clustering." CoRR, abs/1611.05148 1 (2016).
+<br>
+(34) Ghasedi, Kamran, Xiaoqian Wang, Cheng Deng, and Heng Huang. "Balanced self-paced learning for generative adversarial clustering network." In Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition, pp. 4391-4400. 2019.
 """
 
