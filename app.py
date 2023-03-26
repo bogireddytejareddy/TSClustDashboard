@@ -916,6 +916,6 @@ with tab_method:
     st.markdown('# Time-Series Clustering Methods')
     st.markdown(text_description_models, unsafe_allow_html=True)
 
- with tab_reference:
+with tab_reference:
     st.markdown('# References')
     
