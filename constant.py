@@ -417,6 +417,8 @@ lists the methods considered:
 
 ** Note: Results for LDPS and USLM methods are not mentioned because of thier infeasible runtimes on large datasets.
 
+# References
+
 [1] MacQueen, J. "Some methods for classiﬁcation and analysis of multivariate observations." In Proc. 5th Berkeley Symposium on Math., Stat., and Prob, p. 281. 1965.
 <br>
 [2] Kaufman, Leonard, and Peter J. Rousseeuw. Finding groups in data: an introduction to cluster analysis. John Wiley & Sons, 2009.
