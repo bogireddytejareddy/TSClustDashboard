@@ -394,10 +394,10 @@ lists the methods considered:
 | <span style="background-color:DarkSlateGray;color:LavenderBlush;font-weight:bold"> Clustering Method </span>  | <span style='background-color:DarkSlateGray;color:LavenderBlush;font-weight:bold'> Distance Measure / Feature Vector </span> | <span style='background-color:DarkSlateGray;color:LavenderBlush;font-weight:bold'> Reference  </span> |
 |:------------------|:----------------------------------|:----------------------------|
 | 𝑘-AVG             | AR-COEFF                                 |                 [20]              |
-| 𝑘-AVG             | CATCH22                                 |          [23]                     |
-| 𝑘-AVG             | LPCC                                 |             [21]                  |
 | 𝑘-AVG             | AR-PVAL                                 |               [22]                |
-| 𝑘-AVG             | ES-COEFF                                 |                               |
+| 𝑘-AVG             | LPCC                                 |             [21]                  |
+| 𝑘-AVG             | CATCH22                                 |          [23]                     |
+| 𝑘-AVG             | ES-COEFF                                 |           [22]                    |
 
 
 ### <span style='color:Tomato'>Deep Learning Clustering</span> 
