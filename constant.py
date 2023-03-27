@@ -315,79 +315,79 @@ lists the methods considered:
 
 | <span style="background-color:DarkSlateGray;color:LavenderBlush;font-weight:bold"> Clustering Method </span>  | <span style='background-color:DarkSlateGray;color:LavenderBlush;font-weight:bold'> Distance Measure / Feature Vector </span> |
 |:------------------|:----------------------------------|
-|𝑘-AVG              |ED                                 |
-|𝑘-Shape              |SBD                                 |
-|𝑘-SC              |STID                                 |
-|𝑘-DBA              |DTW                                 |
-|PAM              |MSM                                 |
-|PAM              |TWED                                 |
-|PAM              |ERP                                 |
-|PAM              |SBD                                 |
-|PAM              |SWALE                                 |
-|PAM              |DTW                                 |
-|PAM              |EDR                                 |
-|PAM              |LCSS                                 |
-|PAM              |ED                                 |
+|𝑘-AVG [1]             |ED                                 |
+|𝑘-Shape [3]             |SBD                                 |
+|𝑘-SC [5]             |STID                                 |
+|𝑘-DBA [4]             |DTW                                 |
+|PAM [2]             |MSM                                 |
+|PAM [2]             |TWED                                 |
+|PAM [2]             |ERP                                 |
+|PAM [2]             |SBD                                 |
+|PAM [2]             |SWALE                                 |
+|PAM [2]             |DTW                                 |
+|PAM [2]             |EDR                                 |
+|PAM [2]             |LCSS                                 |
+|PAM [2]             |ED                                 |
 
 
 ### <span style='color:Tomato'>Kernel Clustering</span> 
 | <span style="background-color:DarkSlateGray;color:LavenderBlush;font-weight:bold"> Clustering Method </span>  | <span style='background-color:DarkSlateGray;color:LavenderBlush;font-weight:bold'> Distance Measure / Feature Vector </span> |
 |:------------------|:----------------------------------|
-| KKM              | SINK                                 |
-| KKM              | GAK                                 |
-| KKM              | KDTW                                 |
-| KKM              | RBF                                 |
-| SC              | SINK                                 |
-| SC              | GAK                                 |
-| SC              | KDTW                                 |
-| SC              | RBF                                 |
+| KKM [6]             | SINK                                 |
+| KKM [6]             | GAK                                 |
+| KKM [6]             | KDTW                                 |
+| KKM [6]             | RBF                                 |
+| SC [7]             | SINK                                 |
+| SC [7]             | GAK                                 |
+| SC [7]             | KDTW                                 |
+| SC [7]             | RBF                                 |
 
 
 ### <span style='color:Tomato'>Density Clustering</span> 
 | <span style="background-color:DarkSlateGray;color:LavenderBlush;font-weight:bold"> Clustering Method </span>  | <span style='background-color:DarkSlateGray;color:LavenderBlush;font-weight:bold'> Distance Measure / Feature Vector </span> |
 |:------------------|:----------------------------------|
-| DBSCAN              | ED                                 |
-| DBSCAN              | SBD                                 |
-| DBSCAN              | MSM                                 |
-| DP              | ED                                 |
-| DP              | SBD                                 |
-| DP              | MSM                                 |
-| OPTICS              | ED                                 |
-| OPTICS              | SBD                                 |
-| OPTICS              | MSM                                 |
+| DBSCAN [8]             | ED                                 |
+| DBSCAN [8]             | SBD                                 |
+| DBSCAN [8]             | MSM                                 |
+| DP [10]             | ED                                 |
+| DP [10]             | SBD                                 |
+| DP [10]             | MSM                                 |
+| OPTICS [9]             | ED                                 |
+| OPTICS [9]             | SBD                                 |
+| OPTICS [9]             | MSM                                 |
 
 
 ### <span style='color:Tomato'>Hierarchical Clustering</span> 
 | <span style="background-color:DarkSlateGray;color:LavenderBlush;font-weight:bold"> Clustering Method </span>  | <span style='background-color:DarkSlateGray;color:LavenderBlush;font-weight:bold'> Distance Measure / Feature Vector </span> |
 |:------------------|:----------------------------------|
-| AGG              | ED                                 |
-| AGG              | SBD                                 |
-| AGG              | MSM                                 |
-| BIRCH              | -                                 |
+| AGG [11]             | ED                                 |
+| AGG [11]             | SBD                                 |
+| AGG [11]             | MSM                                 |
+| BIRCH [12]             | -                                 |
 
 
 ### <span style='color:Tomato'>Distribution Clustering</span> 
 | <span style="background-color:DarkSlateGray;color:LavenderBlush;font-weight:bold"> Clustering Method </span>  | <span style='background-color:DarkSlateGray;color:LavenderBlush;font-weight:bold'> Distance Measure / Feature Vector </span> |
 |:------------------|:----------------------------------|
-| AP              | ED                                 |
-| AP              | SBD                                 |
-| AP              | MSM                                 |
-| GMM              | -                                 |
+| AP [13]             | ED                                 |
+| AP [13]             | SBD                                 |
+| AP [13]             | MSM                                 |
+| GMM [14]             | -                                 |
 
 
 ### <span style='color:Tomato'>Shapelet Clustering</span> 
 | <span style="background-color:DarkSlateGray;color:LavenderBlush;font-weight:bold"> Clustering Method </span>  | <span style='background-color:DarkSlateGray;color:LavenderBlush;font-weight:bold'> Distance Measure / Feature Vector </span> |
 |:------------------|:----------------------------------|
-| UShapelet              | -                                 |
-| LDPS              | -                                 |
-| USLM              | -                                 |
+| UShapelet [15]             | -                                 |
+| LDPS [16]             | -                                 |
+| USLM [17]             | -                                 |
 
 
 ### <span style='color:Tomato'>Semi-Supervised Clustering</span> 
 | <span style="background-color:DarkSlateGray;color:LavenderBlush;font-weight:bold"> Clustering Method </span>  | <span style='background-color:DarkSlateGray;color:LavenderBlush;font-weight:bold'> Distance Measure / Feature Vector </span> |
 |:------------------|:----------------------------------|
-| FeatTS              | -                                 |
-| SS-DTW              | -                                 |
+| FeatTS [18]             | -                                 |
+| SS-DTW [19]             | -                                 |
 
 
 ### <span style='color:Tomato'>Model and Feature Clustering</span> 
@@ -403,16 +403,16 @@ lists the methods considered:
 ### <span style='color:Tomato'>Deep Learning Clustering</span> 
 | <span style="background-color:DarkSlateGray;color:LavenderBlush;font-weight:bold"> Clustering Method </span>  | <span style='background-color:DarkSlateGray;color:LavenderBlush;font-weight:bold'> Distance Measure / Feature Vector </span> |
 |:------------------|:----------------------------------|
-| IDEC            | -                                 |
-| DEC            | -                                 |
-| DTC            | -                                 |
-| DTCR            | -                                 |
-| SOM-VAE            | -                                 |
-| DEPICT            | -                                 |
-| SDCN            | -                                 |
-| ClusterGAN            | -                                 |
-| VADE            | -                                 |
-| DCN            | -                                 |
+| IDEC [27]           | -                                 |
+| DEC [26]           | -                                 |
+| DTC [29]           | -                                 |
+| DTCR [28]           | -                                 |
+| SOM-VAE [30]           | -                                 |
+| DEPICT [31]           | -                                 |
+| SDCN [32]           | -                                 |
+| ClusterGAN [34]           | -                                 |
+| VADE [33]           | -                                 |
+| DCN [25]           | -                                 |
 
 
 ** Note: Results for LDPS and USLM methods are not mentioned because of thier infeasible runtimes on large datasets.
