@@ -829,7 +829,53 @@ def plot_ablation(df, metric_name, datasets):
                     st.pyplot(fig)
 
                 stat_plots(df)
+    tab16:
+        df = df.loc[all_df['Dataset'].isin(datasets)][[method_g + '-' + metric_name for method_g in ['DCN', 'DEC', 'IDEC', 'DEPICT', 'DTC', 'DTCR', 'SDCN', 'SOM_VAE', 'ClusterGAN', 'VADE']]]
+        df = df[df.mean().sort_values().index]
+        fig = go.Figure()
+        for i, cols in enumerate(df.columns[:]):
+            fig.add_trace(go.Box(y=df[cols], name=cols[:-len(metric_name)-1],
+                                            marker=dict(
+                                            opacity=1,
+                                            color='rgb(8,81,156)',
+                                            outliercolor='rgba(219, 64, 82, 0.6)',
+                                            line=dict(
+                                                outliercolor='rgba(219, 64, 82, 0.6)',
+                                                outlierwidth=2)),
+                                        line_color='rgb(8,81,156)'
+                                    ))
+        fig.update_layout(showlegend=False, 
+                              width=1290, 
+                              height=600, 
+                              template="plotly_white", 
+                              font=dict(
+                                        size=39,
+                                        color="black"))
+        fig.update_xaxes(tickfont_size=16)
+        fig.update_yaxes(tickfont_size=16)
+        #fig.update_xaxes(tickfont_size=15, ticks="outside", ticklen=20, tickwidth=2)
+        st.plotly_chart(fig)
 
+        if len(datasets) > 0:
+            def stat_plots(df_toplot):
+                def cd_diagram_process(df, rank_ascending=False):
+                    df = df.rank(ascending=rank_ascending, axis=1)
+                    return df
+                
+                rank_ri_df  = cd_diagram_process(df_toplot)
+                rank_df = rank_ri_df.mean().sort_values()
+
+                names = []
+                for method in rank_df.index.values:
+                    names.append(method[:-len(metric_name)-1])
+
+                avranks =  rank_df.values
+                cd = compute_CD(avranks, 128, "0.1")
+                graph_ranks(avranks, names, cd=cd, width=9, textspace=1.25)
+                fig = plt.show()
+                st.pyplot(fig)
+            stat_plots(df)
+                
 
 def generate_dataframe(df, datasets, methods_family, metric_name):
     df = df.loc[df['Dataset'].isin(datasets)][[method_g + '-' + metric_name for method_g in methods_family]]
