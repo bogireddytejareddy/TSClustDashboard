@@ -725,7 +725,7 @@ def plot_classwise(all_df, metric_name, datasets):
         AgGrid(df)
 
 
-def plot_ablation(df, metric_name, datasets):
+def plot_ablation(all_df, metric_name, datasets):
     tab14, tab15, tab16 = st.tabs(["Architectures", "Pretext Loss", "Clustering Loss"])
     with tab14:
         arch_list = ['BI_LSTM', 'BI_GRU', 'RES_CNN', 'D_RNN', 'BI_RNN', 'D_CNN', 'MLP', 'S_CNN', 'BI_RNN+ATTN']
@@ -830,7 +830,7 @@ def plot_ablation(df, metric_name, datasets):
 
                 stat_plots(df)
     with tab16:
-        df = df.loc[df['Dataset'].isin(datasets)][[method_g + '-' + metric_name for method_g in ['DCN', 'DEC', 'IDEC', 'DEPICT', 'DTC', 'DTCR', 'SDCN', 'SOM_VAE', 'ClusterGAN', 'VADE']]]
+        all_df = all_df.loc[all_df['Dataset'].isin(datasets)][[method_g + '-' + metric_name for method_g in ['DCN', 'DEC', 'IDEC', 'DEPICT', 'DTC', 'DTCR', 'SDCN', 'SOM_VAE', 'ClusterGAN', 'VADE']]]
         df = df[df.mean().sort_values().index]
         fig = go.Figure()
         for i, cols in enumerate(df.columns[:]):
