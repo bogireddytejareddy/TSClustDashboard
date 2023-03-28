@@ -832,7 +832,7 @@ def plot_ablation(all_df, metric_name, datasets):
     with tab16:
         dl_list = ['DCN', 'DEC', 'IDEC', 'DEPICT', 'DTC', 'DTCR', 'SDCN', 'SOM_VAE', 'ClusterGAN', 'VADE']
         container_method = st.container()
-        all_dl1 = st.checkbox("Select all", key='all_dl_measures')
+        all_dl1 = st.checkbox("Select all", key='all_dl1_measures')
         if all_dl1: dl1_list_family = container_method.multiselect('Select clustering losses', sorted(dl_list), sorted(dl_list), key='selector_dl_list1')
         else: dl1_list_family = container_method.multiselect('Select clustering losses', sorted(dl_list), key='selector_dl1', default=dl_list)
         
