@@ -830,7 +830,7 @@ def plot_ablation(df, metric_name, datasets):
 
                 stat_plots(df)
     with tab16:
-        df = df.loc[all_df['Dataset'].isin(datasets)][[method_g + '-' + metric_name for method_g in ['DCN', 'DEC', 'IDEC', 'DEPICT', 'DTC', 'DTCR', 'SDCN', 'SOM_VAE', 'ClusterGAN', 'VADE']]]
+        df = df.loc[df['Dataset'].isin(datasets)][[method_g + '-' + metric_name for method_g in ['DCN', 'DEC', 'IDEC', 'DEPICT', 'DTC', 'DTCR', 'SDCN', 'SOM_VAE', 'ClusterGAN', 'VADE']]]
         df = df[df.mean().sort_values().index]
         fig = go.Figure()
         for i, cols in enumerate(df.columns[:]):
