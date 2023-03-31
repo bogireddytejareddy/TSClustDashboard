@@ -909,7 +909,7 @@ tab_desc, tab_acc, tab_time, tab_stats, tab_analysis, tab_misconceptions, tab_ab
 with tab_desc:
     st.markdown('# Odyssey Engine')
     st.markdown(description_intro1)
-    st.columns(3)[1].image('./data/summary.png', width=1000)
+    st.columns(3)[0].image('./data/summary.png', width=1000)
     st.markdown(description_intro2)
 
 with tab_acc:
