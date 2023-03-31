@@ -273,6 +273,8 @@ preprocessing step for other tasks. Despite being the subject of active research
 benchmarking clustering methods for time series. Therefore, we comprehensively evaluate 80 time-series clustering methods spanning 9 different 
 classes from the data mining, machine learning, and deep learning literature.
 
+![alt text](https://github.com/bogireddytejareddy/TSClustDashboard/blob/main/data/summary.png)
+
 ## Contributors
 
 * [Teja Reddy](https://github.com/bogireddytejareddy) (Exelon Utilities)
