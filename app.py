@@ -909,7 +909,9 @@ tab_desc, tab_acc, tab_time, tab_stats, tab_analysis, tab_misconceptions, tab_ab
 with tab_desc:
     st.markdown('# Odyssey Engine')
     st.markdown(description_intro1)
-    st.columns(3)[0].image('./data/summary.png', width=1000, caption='Overview of Odyssey’s architecture.')
+    background = Image.open('./data/summary.png')
+    col1, col2, col3 = st.columns([1, 5, 0.2])
+    col2.image(background, width=1000, caption='Overview of Odyssey’s architecture.')
     st.markdown(description_intro2)
 
 with tab_acc:
@@ -951,9 +953,6 @@ with tab_method:
     background = Image.open('./data/taxonomy.png')
     col1, col2, col3 = st.columns([1, 5, 0.2])
     col2.image(background, width=1000, caption='Taxonomy of time-series clustering methods in Odyssey.')
-
-    st.columns(3)[0].image('./data/taxonomy.png', width=1000, caption='Taxonomy of time-series clustering methods in Odyssey.')
-    st.markdown(text_description_models2, unsafe_allow_html=True)
 
 #with tab_reference:
 #    st.markdown('# References')
