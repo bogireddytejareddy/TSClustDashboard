@@ -911,7 +911,7 @@ with tab_desc:
     st.markdown(description_intro1)
     background = Image.open('./data/summary.png')
     col1, col2, col3 = st.columns([1.8, 5, 0.2])
-    col2.image(background, width=700, caption='Overview of Odyssey’s architecture.')
+    col2.image(background, width=1200, caption='Overview of Odyssey’s architecture.')
     st.markdown(description_intro2)
     background = Image.open('./data/taxonomy.png')
     col1, col2, col3 = st.columns([1.8, 5, 0.2])
