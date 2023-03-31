@@ -310,11 +310,15 @@ in each dataset.
 
 
 
-text_description_models=f"""
+text_description_models1 = f"""
 We have implemented 80 methods from 9 classes of time-series clustering methods proposed for univariate time series. The following table 
 lists the methods considered:
+"""
 
 
+
+
+text_description_models2 = f"""
 ### <span style='color:Tomato'>Partitional Clustering</span>
 
 | <span style="background-color:DarkSlateGray;color:LavenderBlush;font-weight:bold"> Clustering Method </span>  | <span style='background-color:DarkSlateGray;color:LavenderBlush;font-weight:bold'> Distance Measure / Feature Vector </span> | <span style='background-color:DarkSlateGray;color:LavenderBlush;font-weight:bold'> Reference  </span> |
