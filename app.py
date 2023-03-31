@@ -949,7 +949,7 @@ with tab_method:
     st.markdown(text_description_models1, unsafe_allow_html=True)
     
     background = Image.open('./data/taxonomy.png')
-    col1, col2, col3 = st.columns([2, 5, 0.2])
+    col1, col2, col3 = st.columns([1, 5, 0.2])
     col2.image(background, width=1000, caption='Taxonomy of time-series clustering methods in Odyssey.')
 
     st.columns(3)[0].image('./data/taxonomy.png', width=1000, caption='Taxonomy of time-series clustering methods in Odyssey.')
