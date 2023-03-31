@@ -908,7 +908,7 @@ tab_desc, tab_acc, tab_time, tab_stats, tab_analysis, tab_misconceptions, tab_ab
 
 with tab_desc:
     st.markdown('# Odyssey Engine')
-    st.image('./summary.png')
+    st.image('./data/summary.png')
     st.markdown(description_intro)
 
 with tab_acc:
