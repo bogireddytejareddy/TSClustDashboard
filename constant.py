@@ -267,13 +267,15 @@ list_length = [16,32,64,128,256,512,768,1024]
 oracle = ['GENIE','MORTY']
 
 
-description_intro = f"""
+description_intro1 = f"""
 Clustering is one of the most popular time-series tasks because it enables unsupervised data exploration and often serves as a subroutine or 
 preprocessing step for other tasks. Despite being the subject of active research for decades across disciplines, only limited efforts focused on 
 benchmarking clustering methods for time series. Therefore, we comprehensively evaluate 80 time-series clustering methods spanning 9 different 
 classes from the data mining, machine learning, and deep learning literature.
 
-![alt text](https://github.com/bogireddytejareddy/TSClustDashboard/blob/main/data/summary.png)
+"""
+
+description_intro2 = f"""
 
 ## Contributors
 
