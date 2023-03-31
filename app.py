@@ -913,6 +913,9 @@ with tab_desc:
     col1, col2, col3 = st.columns([1, 5, 0.2])
     col2.image(background, width=1000, caption='Overview of Odyssey’s architecture.')
     st.markdown(description_intro2)
+    background = Image.open('./data/taxonomy.png')
+    col1, col2, col3 = st.columns([1, 5, 0.2])
+    col2.image(background, width=1000, caption='Taxonomy of time-series clustering methods in Odyssey.')
 
 with tab_acc:
     st.markdown('# Evaluation')
@@ -949,10 +952,7 @@ with tab_dataset:
 with tab_method:
     st.markdown('# Time-Series Clustering Methods')
     st.markdown(text_description_models1, unsafe_allow_html=True)
-    
-    background = Image.open('./data/taxonomy.png')
-    col1, col2, col3 = st.columns([1, 5, 0.2])
-    col2.image(background, width=1000, caption='Taxonomy of time-series clustering methods in Odyssey.')
+   
 
 #with tab_reference:
 #    st.markdown('# References')
