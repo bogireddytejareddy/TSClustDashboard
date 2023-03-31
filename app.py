@@ -907,7 +907,8 @@ df = pd.read_csv('data/results.csv')
 tab_desc, tab_acc, tab_time, tab_stats, tab_analysis, tab_misconceptions, tab_ablation, tab_dataset, tab_method = st.tabs(["Description", "Evaluation", "Runtime", "Statistical Tests", "Comparative Analysis", "Misconceptions", "DNN Ablation Analysis", "Datasets", "Methods"])  
 
 with tab_desc:
-    st.markdown('# OdysseyEngine')
+    st.markdown('# Odyssey Engine')
+    st.image('./summary.png')
     st.markdown(description_intro)
 
 with tab_acc:
