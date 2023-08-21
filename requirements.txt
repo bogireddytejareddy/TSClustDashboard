@@ -6,4 +6,4 @@ matplotlib
 numpy
 seaborn
 plotly
-ipywidgets==7.0.0
+ipywidgets
