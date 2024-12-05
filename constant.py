@@ -287,6 +287,10 @@ description_intro2 = f"""
 * [Teja Reddy](https://github.com/bogireddytejareddy) (Exelon Utilities)
 * [John Paparrizos](https://www.paparrizos.org/) (Ohio State University)
 
+## Publications
+
+Paparrizos J, Reddy SP. Odyssey: An engine enabling the time-series clustering journey. Proceedings of the VLDB Endowment. 2023 Aug 1;16(12):4066-9.
+
 ## Datasets
 
 To ease reproducibility, we share our results over an established benchmark:
